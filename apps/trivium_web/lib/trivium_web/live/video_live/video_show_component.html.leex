@@ -1,0 +1,45 @@
+<section class="content__media-width">
+
+  <div class="video-container">
+    <video class="video-player" src="<%= @media.url %>" controls loading="lazy"></video>
+  </div>
+
+  <legend id="video-legend-<%= @media.id %>"
+          class="media__legend"
+          phx-hook="VideoLegend"
+          phx-target="<%= @myself %>"
+          data-media-id="<%= @media.id %>"
+          contenteditable="<%= @contenteditable %>">
+    <%= @media.legend %>
+  </legend>
+
+  <%= if @edit_mode == "editable" do %>
+    <div class="selected-toolbar selected-toolbar__layer-1">
+      <div class="selected-toolbar__left"></div> <%# selected-toolbar__left %>
+
+      <div class="selected-toolbar__right">
+        <div class="selected-toolbar__dynamic">
+          <span><%= @media.position %></span>
+        </div>
+        <span class="selected-toolbar__divider"></span>
+        <a href="#" phx-click="position-video-up" phx-value-id="<%= @media.id %>" phx-target="<%= @myself %>" class="selected-toolbar__link">
+          <figure>
+            <%= TriviumWeb.SvgView.render("_arrow-down.html") %>
+          </figure>
+        </a>
+        <span class="selected-toolbar__divider"></span>
+        <a href="#" phx-click="position-video-down" phx-value-id="<%= @media.id %>" phx-target="<%= @myself %>" class="selected-toolbar__link">
+          <figure>
+            <%= TriviumWeb.SvgView.render("_arrow-up.html") %>
+          </figure>
+        </a>
+        <span class="selected-toolbar__divider"></span>
+        <%= link to: "#", phx_click: "delete-video", phx_target: @myself, phx_value_id: @media.id, phx_value_url: @media.url, data: [confirm: "Are you sure?"], class: "selected-toolbar__link" do %>
+          <figure>
+            <%= TriviumWeb.SvgView.render("_bin.html") %>
+          </figure>
+        <% end %>
+      </div> <%# selected-toolbar__right %>
+    </div> <%# selected-toolbar %>
+  <% end %>
+</section> <%# selected__section-full %>

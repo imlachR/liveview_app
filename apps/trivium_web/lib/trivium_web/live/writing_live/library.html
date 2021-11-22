@@ -1,0 +1,51 @@
+<div class="writing-toolbar">
+  <%# if @edit_mode == "editable" do %>
+  <div class="writing-toolbar__container">
+    <div class="writing-toolbar__side">
+      <!-- <button class="writing-toolbar__btn" onclick="document.execCommand('bold',false,null);"> -->
+        <figure>
+          <%# TriviumWeb.SvgView.render("_bold.html") %>
+        </figure>
+      <!-- </button> -->
+      <span class="writing-toolbar__divider"></span>
+      <!-- <button class="writing-toolbar__btn" onclick="document.execCommand('italic',false,null);"> -->
+        <%# TriviumWeb.SvgView.render("_italic.html") %>
+      <!-- </button> -->
+    </div> <%# writing-toolbar__left %>
+
+    <div class="writing-toolbar__side">
+      <div class="writing-toolbar__position">
+        <span><%= @media.position %></span>
+      </div>
+      <span class="writing-toolbar__divider"></span>
+      <a href="#" phx-click="position-writing-up" phx-value-id="<%= @media.id %>" phx-target="<%= @myself %>" class="writing-toolbar__link">
+        <figure>
+          <%= TriviumWeb.SvgView.render("_arrow-down.html") %>
+        </figure>
+      </a>
+      <span class="selected-toolbar__divider"></span>
+      <a href="#" phx-click="position-writing-down" phx-value-id="<%= @media.id %>" phx-target="<%= @myself %>" class="writing-toolbar__link">
+        <figure>
+          <%= TriviumWeb.SvgView.render("_arrow-up.html") %>
+        </figure>
+      </a>
+      <span class="selected-toolbar__divider"></span>
+      <%= link to: "#", phx_click: "delete-writing", phx_target: @myself, phx_value_id: @media.id, data: [confirm: "Are you sure?"], class: "selected-toolbar__link" do %>
+        <figure>
+          <%= TriviumWeb.SvgView.render("_bin.html") %>
+        </figure>
+      <% end %>
+    </div> <%# writing-toolbar__right %>
+  </div>
+
+  <div class="spacer-24"></div>
+
+  <%# end %>
+
+</div> <%# >>>>>> writing-toolbar %>
+
+<div id="writer-<%# @media.id %>"
+      data-media-id="<%# @media.id %>"
+      contenteditable="<%# @contenteditable %>"
+      phx-hook="Writer" class="writing-body content__standard-width"><%= as_html(@media.body) %></div>
+</div> <%# >>>>> writing-body %>

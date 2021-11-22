@@ -1,0 +1,109 @@
+<div class="profile">
+  <div class="profile-layer-0 dark-bg"></div> <%# >>>>>>>>> profile-layer-0 %>
+  <div class="profile-layer-1">
+
+    <nav class="nav dark-bg">
+      <div class="nav__container">
+        <div class="nav__left">
+          <a href="/" class="nav__icon">
+            <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+          </a>
+          <p class="nav__title">
+            <%= gettext "profile" %><span class="nav__dot">.</span>
+          </p> <%# >>>>>>>>> nav__title %>
+        </div> <%# >>>>>>>>> nav__left %>
+        <div class="nav__right">
+          <a href="/" class="logo__16">
+            <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+          </a>
+          <ul class="nav__ul">
+            <li class="nav__li">
+              <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+                <%= if @current_user.avatar != nil do %>
+                  <div class="nav-avatar">
+                    <%= if user_score(@current_user.id) < 0 do %>
+                      <div class="nav-avatar__score">
+                        <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                      </div>
+                    <% end %>
+                    <figure class="nav-avatar__figure">
+                      <img class="nav-avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+                    </figure>
+                  </div>
+                <% else %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+                  <div class="nav-avatar">
+                    <%= if user_score(@current_user.id) < 0 do %>
+                      <div class="nav-avatar__score">
+                        <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                      </div>
+                    <% end %>
+                    <figure class="nav-avatar__fi">
+                      <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                    </figure>
+                  </div>
+                <% end %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+              <% end %> <%# >>>>>>>>> Routes.profile_show_path %>
+            </li>
+            <li class="nav__li">
+              <%= link (gettext "exit"),
+                  to: Routes.user_session_path(@socket,
+                                               :delete,
+                                               locale: Gettext.put_locale(TriviumWeb.Gettext,
+                                                                          @current_user.prefered_language)),
+                                                                          method: :delete, class: "nav__link" %>
+            </li>
+          </ul> <%# >>>>>>>>> nav__right--links %>
+        </div> <%# >>>>>>>>> nav__right %>
+
+      </div> <%# >>>>>>>>> nav__container %>
+    </nav> <%# >>>>>>>>> nav %>
+
+    <div class="spacer-80"></div>
+
+    <%= live_component @socket, TriviumWeb.AvatarComponent,
+              id: "avatar-#{@user.id}",
+              user: @user,
+              user_score: user_score(@current_user.id) %>
+
+    <div class="spacer-40"></div>
+
+    <div class="profile-info">
+
+      <div class="profile-info__tip">
+        <%= TriviumWeb.SvgView.render("_triangle-top.html") %>
+      </div>
+
+      <div class="profile-info__container">
+
+        <div class="profile-info__field">
+          <span class="profile-info__key"><%= gettext "name" %></span>
+          <p class="profile-info__value"><%= @user.name %></p>
+        </div> <%# >>>>>>>>> profile-info__field %>
+
+        <div class="profile-info__field">
+          <span class="profile-info__key"><%= gettext "email" %></span>
+          <p class="profile-info__value"><%= @user.email %></p>
+        </div> <%# >>>>>>>>> profile-info__field %>
+
+        <div class="profile-info__field">
+          <span class="profile-info__key"><%= gettext "language" %></span>
+          <%= f = form_for @changeset, "#",
+            id: "user-lang",
+            phx_change: "preferred-language" %>
+            <%= select f, :prefered_language, ["English": "en", "Português": "pt_BR", "Español": "es"], class: "select" %>
+          </form>
+
+        </div> <%# >>>>>>>>> profile-info__field %>
+
+        <div class="spacer-24"></div>
+
+        <div class="profile-info__cta">
+          <%# link "edit", to: Routes.user_settings_path(@socket, :edit), class: "profile-info__link" %>
+          <div class="spacer-24"></div>
+        </div>
+      </div> <%# >>>>>>>>> profile-info__container %>
+    </div> <%# >>>>>>>>> profile-info %>
+
+    <div class="spacer-180"></div>
+  </div> <%# >>>>>>>>> profile-layer-1 %>
+</div> <%# >>>>>>>>> profile %>

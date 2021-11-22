@@ -1,0 +1,187 @@
+<div class="content__exercise-width">
+
+  <div class="question">
+    <%# >>>>>>>>>
+      TOOLBAR
+    >>>>>>>>>>> %>
+    <%= if @edit_mode == "editable" do %>
+      <div class="spacer-20"></div>
+
+      <div class="question-toolbar">
+        <div class="question-toolbar__container">
+          <div class="question-toolbar__side"></div> <%# >>>> question-toolbar__side %>
+          <div class="question-toolbar__side">
+            <div class="question-toolbar__position">
+              <span><%= @question.position %></span>
+            </div>
+            <span class="question-toolbar__divider"></span>
+            <a href="#" phx-click="position-question-up" phx-target="<%= @myself %>" phx-value-id="<%= @question.id %>" class="question-toolbar__link">
+              <figure>
+                <%= TriviumWeb.SvgView.render("_arrow-down.html") %>
+              </figure>
+            </a>
+            <span class="question-toolbar__divider"></span>
+            <a href="#" phx-click="position-question-down" phx-target="<%= @myself %>" phx-value-id="<%= @question.id %>" class="question-toolbar__link">
+              <figure>
+                <%= TriviumWeb.SvgView.render("_arrow-up.html") %>
+              </figure>
+            </a>
+            <span class="question-toolbar__divider"></span>
+            <%= link to: "#", phx_click: "delete-qa", phx_target: @myself, phx_value_id: @question.id, data: [confirm: "Are you sure?"], class: "question-toolbar__link" do %>
+              <figure>
+                <%= TriviumWeb.SvgView.render("_bin.html") %>
+              </figure>
+            <% end %>
+          </div> <%# >>>> question-toolbar__side %>
+        </div> <%# >>>> question-toolbar__container %>
+      </div> <%# >>>> question-toolbar %>
+    <% end %> <%# >>>> if @edit_mode == "editable" do %>
+
+    <div class="question__container">
+      <%# >>>>>>>>>
+        QUESTION TEXT
+      >>>>>>>>>>> %>
+      <p id="question-<%= @question.id %>"
+         data-question-id="<%= @question.id %>"
+         contenteditable="<%= @contenteditable %>"
+         phx-hook="Question"
+         class="question__text"><%= @question.question_text %></p>
+
+      <div class="spacer-24"></div>
+
+      <%= if @question.answers == [] do %>
+        <%# >>>> NO STUDENT ANSWER ANY YET %>
+        <div class="answers__not-answer-yet">
+          <p><%= gettext "No students responded yet" %></p>  <%# gettext "Nenhum aluno respondeu ainda" %>
+        </div>
+      <% end %> <%# >>>> if @question.answers == [] do %>
+
+      <%= if @question.answers != [] do %>
+        <ul class="answers">
+          <%= for answer <- @question.answers do %>
+            <li class="answer" id="answer-<%= answer.id %>">
+              <div class="answer__top">
+                <div class="answer__top--layer-0"></div>
+                <div class="answer__top--layer-1">
+                  <div class="answer__left">
+                    <%= if answer.user.avatar != nil do %>
+                      <figure class="answer__figure">
+                        <img class="answer__avatar" src="<%= answer.user.avatar.url %>" alt="">
+                      </figure>
+                    <% else %>
+                      <figure class="answer__fi">
+                        <%= TriviumWeb.SvgView.render("_fallback-48x48.html") %>
+                      </figure>
+                    <% end %>
+                  </div> <%# >>>> answer__left %>
+                  <div class="answer__right">
+                    <p class="answer__bubble"><%= answer.answer_text %></p>
+                  </div> <%# >>>> answer__right %>
+                </div>
+              </div> <%# >>>> answer__top %>
+              <div class="answer__bottom">
+                <div class="answer__b-left">
+                  <a href="#" class="answer__link"
+                              phx-click="delete-answer"
+                              phx-target="<%= @myself %>"
+                              phx-value-id="<%= answer.id %>">
+                              <figure class="answer__fi">
+                                <%= TriviumWeb.SvgView.render("_bin.html") %>
+                              </figure>
+                            </a>
+                  <%= if answer.score != nil do %>
+                    <a href="#" class="answer__reset"
+                                phx-click="answer-teacher-reset"
+                                phx-target="<%= @myself %>"
+                                phx-value-id="<%= answer.id %>"><%= gettext "reset" %></a> <%# gettext "redefinir" %>
+                  <% end %>
+                  <a href="#" class="answer__link">
+                    <figure class="answer__fi">
+                      <%# TriviumWeb.SvgView.render("_chat.html") %>
+                    </figure>
+                  </a>
+                </div>
+                <div class="answer__b-middle">
+                  <!-- <input class="answer__input" type="number" name="" value="10"> -->
+                </div>
+
+                <div class="answer__b-right">
+                  <%= if answer.score == nil do %>
+                    <a class="answer__link" href="#" phx-click="wrong-answer" phx-target="<%= @myself %>" phx-value-id="<%= answer.id %>">
+                      <figure class="answer__fi">
+                        <%= TriviumWeb.SvgView.render("_close.html") %>
+                      </figure>
+                    </a>
+                    <a class="answer__link" href="#" phx-click="right-answer" phx-target="<%= @myself %>" phx-value-id="<%= answer.id %>">
+                      <figure class="answer__fi">
+                        <%= TriviumWeb.SvgView.render("_checkmark.html") %>
+                      </figure>
+                    </a>
+                  <% else %> <%# >>>> if answer.score == nil do %>
+                    <p class="answer__points"><%= answer.score %> <%= gettext "points" %></p>
+                    <figure class="answer__corrected-icon">
+                      <%= if answer.score == 0 do %>
+                        <%= TriviumWeb.SvgView.render("_close.html") %>
+                      <% end %>
+                      <%= if answer.score != nil && answer.score > 0 do %>
+                        <%= TriviumWeb.SvgView.render("_checkmark.html") %>
+                      <% end %>
+                    </figure> <!-- answer-student__icon -->
+                  <% end %> <%# >>>> if answer.score == nil do %>
+                </div> <%# >>>> answer__b-right %>
+
+              </div> <%# >>>> answer__bottom %>
+            </li> <%# >>>> answer %>
+          <% end %> <%# >>>> if @question.answers != [] do %>
+        </ul> <%# >>>> answers %>
+      <% end %> <%# >>>> if @question.answers != [] do %>
+
+      <div class="spacer-24"></div>
+
+      <%# >>>>>>>>>
+        SCORE
+      >>>>>>>>>>> %>
+      <div class="question-score">
+        <div class="question-score__container">
+          <div class="question-score__left">
+            <p class="question-score__worth">
+              <%= gettext "Worth" %>
+              <%= if @edit_mode == "editable" do %>
+                <input id="score-<%= @question.id %>"
+                       class="question-score__input"
+                       type="number"
+                       name="score-input"
+                       value="<%= @question.score %>"
+                       data-score-id="<%= @question.id %>"
+                       phx-hook="Score" min="0" required>
+              <% else %>
+                <span><%= @question.score %></span>
+              <% end %>
+              <%= gettext "points" %></p> <%# gettext "Vale" %> <%# gettext "pontos" %>
+          </div> <%# >>>> question-score__left %>
+          <div class="question-score__right"></div>
+        </div> <%# >>>> question-score__container %>
+      </div> <%# >>>> question-score %>
+
+    </div> <%# >>>> question__container %>
+
+  </div> <%# >>>> question %>
+
+</div> <%# >>>> content__media-width %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# >>>>  %>

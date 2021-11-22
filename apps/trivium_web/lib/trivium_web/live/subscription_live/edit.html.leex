@@ -1,0 +1,19 @@
+<h1>Subscription Edit</h1>
+
+<h1><%= @user.name %></h1>
+
+<br><br>
+<%= f = form_for @changeset, "#",
+  id: "subscription-form",
+  phx_submit: "save" %>
+
+  <%# label f, :name %>
+  <%# text_input f, :name %>
+  <%# error_tag f, :name %>
+
+  <%= label f, :policy %>
+  <%= select f, :policy, ["student", "teacher", "staff", "director", "owner"] %>
+  <%= error_tag f, :policy %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

@@ -1,0 +1,93 @@
+<div class="profile">
+  <div class="profile-layer-0 dark-bg"></div> <%# >>>>>>>>> profile-layer-0 %>
+  <div class="profile-layer-1">
+
+    <nav class="nav dark-bg">
+      <div class="nav__container">
+        <div class="nav__left">
+          <%= link to: Routes.profile_show_path(@conn, :show, @current_user.id), class: "nav__icon" do %>
+            <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+          <% end %>
+          <p class="nav__title">
+            <%= gettext "profile" %><span class="nav__dot">.</span>
+          </p> <%# >>>>>>>>> nav__title %>
+        </div> <%# >>>>>>>>> nav__left %>
+        <div class="nav__right">
+          <a href="/" class="logo__16">
+            <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+          </a>
+          <div class="nav__right--links">
+            <%= link (gettext "exit"), to: Routes.user_session_path(@conn, :delete), method: :delete, class: "nav__link nav__link--margin" %>
+            <%= live_redirect to: Routes.profile_show_path(@conn, :show, @current_user.id), class: "nav__link" do %>
+              <%= if @current_user.avatar != nil do %>
+                <figure class="nav__avatar--figure">
+                  <img class="nav__avatar--img" src="<%= @current_user.avatar.url %>" alt="">
+                </figure>
+              <% else %>
+                <figure class="nav__avatar--fallback">
+                  <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                </figure>
+              <% end %>
+            <% end %>
+          </div> <%# >>>>>>>>> nav__right--links %>
+        </div> <%# >>>>>>>>> nav__right %>
+
+      </div> <%# >>>>>>>>> nav__container %>
+    </nav> <%# >>>>>>>>> nav %>
+
+    <div class="spacer-80"></div>
+
+  </div> <%# >>>>>>>>> profile-layer-1 %>
+</div> <%# >>>>>>>>> profile %>
+
+<h3>Change email</h3>
+
+<%= form_for @email_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
+  <%= if @email_changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= hidden_input f, :action, name: "action", value: "update_email" %>
+
+  <%= label f, :email %>
+  <%= email_input f, :email, required: true %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :current_password, for: "current_password_for_email" %>
+  <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_email" %>
+  <%= error_tag f, :current_password %>
+
+  <div>
+    <%= submit "Change email" %>
+  </div>
+<% end %>
+
+<h3>Change password</h3>
+
+<%= form_for @password_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
+  <%= if @password_changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= hidden_input f, :action, name: "action", value: "update_password" %>
+
+  <%= label f, :password, "New password" %>
+  <%= password_input f, :password, required: true %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :password_confirmation, "Confirm new password" %>
+  <%= password_input f, :password_confirmation, required: true %>
+  <%= error_tag f, :password_confirmation %>
+
+  <%= label f, :current_password, for: "current_password_for_password" %>
+  <%= password_input f, :current_password, required: true, name: "current_password", id: "current_password_for_password" %>
+  <%= error_tag f, :current_password %>
+
+  <div>
+    <%= submit "Change password" %>
+  </div>
+<% end %>

@@ -1,0 +1,92 @@
+<nav class="nav dark-bg">
+  <div class="nav__container">
+    <div class="nav__left">
+      <a href="/" class="nav__icon">
+        <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+      </a>
+      <p class="nav__title">
+        <%= gettext "institutions" %><span class="nav__dot">.</span>
+      </p> <%# >>>>>>>>> nav__title %>
+    </div> <%# >>>>>>>>> nav__left %>
+    <div class="nav__right">
+      <a href="/" class="logo__16">
+        <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+      </a>
+      <ul class="nav__ul">
+        <li class="nav__li">
+          <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+            <%= if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__figure">
+                  <img class="nav-avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+                </figure>
+              </div>
+            <% else %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__fi">
+                  <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                </figure>
+              </div>
+            <% end %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+          <% end %> <%# >>>>>>>>> Routes.profile_show_path %>
+        </li>
+        <li class="nav__li">
+          <%= link (gettext "exit"),
+              to: Routes.user_session_path(@socket,
+                                           :delete,
+                                           locale: Gettext.put_locale(TriviumWeb.Gettext,
+                                                                      @current_user.prefered_language)),
+                                                                      method: :delete, class: "nav__link" %>
+        </li>
+      </ul> <%# >>>>>>>>> nav__right--links %>
+    </div> <%# >>>>>>>>> nav__right %>
+
+  </div> <%# >>>>>>>>> nav__container %>
+</nav> <%# >>>>>>>>> nav %>
+
+<div class="spacer-32 dark-bg"></div>
+
+<div class="agent-wrapper dark-bg">
+  <div class="agent">
+    <div class="agent__container">
+      <p class="agent__message">
+        <%= gettext "Select an institution" %>
+      </p> <%# agent__message %>
+    </div> <%# agent__container %>
+  </div> <%# agent %>
+</div> <%# agent-wrapper %>
+
+<div class="spacer-20 dark-bg"></div>
+
+<div class="spacer-40"></div>
+
+<ul id="searchable" class="swiss">
+  <%= for institution <- @institutions do %>
+    <li id="<%= institution.id %>" class="swiss__item">
+      <div class="swiss__top">
+        <%= link institution.name, to: Routes.institution_show_path(@socket, :show, institution), class: "swiss__link" %>
+        <div class="swiss__location"><%= institution.location %></div>
+      </div> <!-- card__top -->
+
+      <%= if @current_user.role == "root" || @current_user.role == "sales" do %>
+        <div class="swiss__controls">
+          <%= live_patch (gettext "edit"), to: Routes.institution_edit_path(@socket, :edit, institution), class: "swiss__edit" %>
+          <%= link (gettext "delete"), to: "#", phx_click: "delete", phx_value_id: institution.id, data: [confirm: "Are you sure?"], class: "swiss__delete" %>
+        </div> <!-- swiss__controls -->
+      <% end %>
+
+    </li> <!-- swiss__item -->
+  <% end %>
+</ul> <!-- swiss -->
+
+<%= live_component @socket, TriviumWeb.MenuComponent, current_user: @current_user, link_path: Routes.institution_new_path(@socket, :new) %>

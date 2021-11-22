@@ -1,0 +1,6 @@
+.search {
+  grid-column: 1 / -1;
+
+  height: 2rem;
+  background: hsla(232, 54%, 11%, 1);
+}

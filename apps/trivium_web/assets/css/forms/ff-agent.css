@@ -1,0 +1,33 @@
+.ff-agent {
+  grid-column: 2 / 8;
+  grid-row: 3 / 4;
+
+  @media (min-width: 399px) {
+    grid-column: 3 / 4;
+  }
+
+  display: flex;
+  align-items: flex-end;
+
+  &__message {
+    padding: .8rem 1.6rem;
+
+    background: hsl(210, 100%, 56%);
+    border-radius: 1.6rem;
+    border-bottom-left-radius: 0;
+
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, 1);
+  }
+
+  &__time {
+    visibility: hidden;
+
+    @media (min-width: 480px) {
+      visibility: visible;
+    }
+
+    padding-left: .8rem;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="agent-wrapper dark-bg">
+  <div class="agent">
+    <div class="agent__container">
+      <p class="agent__message">
+        <%= gettext "Hello" %> <%= first_name(@current_user.name) %>!
+        <%= gettext "choose an option" %>
+      </p> <%# agent__message %>
+    </div> <%# agent__container %>
+  </div> <%# agent %>
+</div> <%# agent-wrapper %>
+
+<div class="spacer-20 dark-bg"></div>
+
+<div class="spacer-20"></div>
+
+<section class="selected__section-full">
+  <div class="dash">
+    <div class="dash__dialog">
+      <p class="dash__text">dash</p>
+    </div> <%# dash__dialog %>
+    <div class="dash__container">
+      <%= live_redirect (gettext "institutions"), to: Routes.institution_index_path(@socket, :index), class: "dash__link" %> -
+      <%= live_redirect "crm", to: Routes.crm_index_path(@socket, :index), class: "dash__link" %>
+    </div> <%# dash__container %>
+  </div> <%# dash %>
+</section>

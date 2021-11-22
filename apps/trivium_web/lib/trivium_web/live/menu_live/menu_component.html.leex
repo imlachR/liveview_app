@@ -1,0 +1,123 @@
+<%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "menu-avatar" do %>
+  <%= if @current_user.avatar == nil do %>
+    <div class="avatar">
+      <figure class="avatar__fi">
+        <%= TriviumWeb.SvgView.render("_fallback-46x46.html") %>
+      </figure>
+      <div class="avatar__score">
+        <span class="avatar__text"><%= user_score(@current_user.id) %></span>
+      </div>
+    </div>
+  <% else %>
+    <div class="avatar">
+      <figure class="avatar__figure">
+        <img class="avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+      </figure>
+      <div class="avatar__score">
+        <span class="avatar__text"><%= user_score(@current_user.id) %></span>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= if @link_path != nil do %>
+  <%= live_redirect to: @link_path, class: "menu-new" do %>
+    <%= TriviumWeb.SvgView.render("_plus.html") %>
+  <% end %>
+<% end %>
+
+<div class="menu-cubes">
+  <a href="#" id="cubes" class="cubes" phx-hook="Cubes">
+    <div class="cube transparent-bg"></div>
+    <div class="cube blue-bg transparent-text">2</div>
+    <div class="cube crimson-bg transparent-text">1</div>
+    <div class="cube yellow-bg transparent-text">n</div>
+  </a> <%# >>>>>>>>> cubes %>
+</div> <%# >>>>>>>>> menu-cubes %>
+
+
+<div id="modal-glass" class="glass">
+  <div class="glass__container">
+
+    <div class="glass__top">
+      <div class="glass__left">
+        <ul class="arrow-link">
+          <li class="arrow-link__li">
+            <a href="mailto:r@triviumlms.com" class="arrow-link__link">
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "contact us" %></span>
+            </a>
+          </li>
+          <div class="spacer-16"></div>
+          <li class="arrow-link__li">
+            <%= link to: Routes.user_session_path(@socket, :delete), method: :delete, class: "arrow-link__link" do %>
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "exit" %></span>
+            <% end %>
+          </li>
+        </ul> <%# >>>>> arrow-link %>
+      </div> <%# >>>>>>>>> glass__left %>
+      <div class="glass__right">
+        <a href="#" id="glass__close">
+          <figure class="answer-teacher__icon">
+            <%= TriviumWeb.SvgView.render("_close_white.html") %>
+          </figure>
+        </a>
+      </div> <%# >>>>>>>>> glass__right %>
+    </div> <%# >>>>>>>>> glass__top %>
+
+
+    <div class="glass__bottom">
+
+      <div class="glass__later-update"></div>
+
+      <ul class="glass__cubes">
+        <li class="glass__cube green-bg no-visibility">
+          <%= live_redirect to: "#", class: "glass__cube-link" do %>
+            <span class="glass__cube-title dark-text"><%= gettext "analitycs" %></span>
+            <span class="glass__cube-count dark-text">+226</span>
+          <% end %>
+        </li>
+        <li class="glass__cube blue-bg no-visibility">
+          <%= live_redirect to: "#", class: "glass__cube-link" do %>
+            <span class="glass__cube-title white-text"><%= gettext "messages" %></span>
+            <span class="glass__cube-count white-text">+6</span>
+          <% end %>
+        </li>
+        <li class="glass__cube yellow-bg">
+          <%= live_redirect to: Routes.subscription_new_path(@socket, :new), class: "glass__cube-link" do %>
+            <span class="glass__cube-title dark-text"><%= gettext "new classroom" %></span>
+            <span class="glass__cube-count dark-text">+1</span>
+          <% end %>
+        </li>
+        <li class="glass__cube crimson-bg no-visibility">
+          <%= live_redirect to: "#", class: "glass__cube-link" do %>
+            <span class="glass__cube-title white-text"><%= gettext "notifications" %></span>
+            <span class="glass__cube-count white-text">+11</span>
+          <% end %>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div> <%# >>>>>>>>> glass__container %>
+</div> <%# >>>>>>>>> glass %>

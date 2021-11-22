@@ -1,0 +1,146 @@
+<div class="content__exercise-width">
+
+  <div class="question">
+
+    <div class="question__container">
+      <%# >>>>>>>>>
+        QUESTION TEXT
+      >>>>>>>>>>> %>
+      <p id="question-<%= @question.id %>" class="question__text">
+        <%= @question.question_text %>
+      </p>
+
+      <div class="spacer-20"></div>
+
+
+      <%= if @question.id in @user_answered_this_question do %>
+        <%# >>>>>>>>>
+          HAS ANSWERED
+        >>>>>>>>>>> %>
+        <ul class="answers">
+          <%= for answer <- @question.answers do %>
+            <%= if @current_user.id == answer.user.id do %>
+              <li class="answer" id="answer-<%= answer.id %>">
+                <div class="answer-student">
+                  <div class="answer-student__left">
+                    <p class="answer-student__bubble"><%= answer.answer_text %></p>
+                  </div> <%# >>>> answer__left %>
+                  <div class="answer-student__right">
+                    <%= if answer.user.avatar != nil do %>
+                      <figure class="answer__figure">
+                        <img class="answer__avatar" src="<%= answer.user.avatar.url %>" alt="">
+                      </figure>
+                    <% else %>
+                      <figure class="answer__fi">
+                        <%= TriviumWeb.SvgView.render("_fallback-48x48.html") %>
+                      </figure>
+                    <% end %>
+                  </div> <%# >>>> answer__right %>
+                </div>  <%# >>>> answer-student %>
+              </li> <%# >>>> answer %>
+            <% end %> <%# >>>> if @current_user.id == answer.user.id do %>
+          <% end %> <%# >>>> for answer <- @question.answers do %>
+        </ul> <%# >>>> answers %>
+
+        <div class="spacer-24"></div>
+
+        <%# >>>>>>>>>
+          SCORE
+        >>>>>>>>>>> %>
+        <%= for answer <- @question.answers do %>
+          <%= if @current_user.id == answer.user.id do %>
+            <div class="question-score">
+              <div class="question-score__container">
+                <div class="question-score__left">
+                  <p class="question-score__worth">
+                    <%= gettext "Worth" %>
+                    <span><%= @question.score %></span>
+                    <%= gettext "points" %></p> <%# gettext "Vale" %> <%# gettext "pontos" %>
+                </div> <%# >>>> question-score__left %>
+                <div class="question-score__right">
+                  <%= if answer.score == nil do %>
+                    <legend class="question-score__evaluation"><%= gettext "Awaiting evaluation" %></legend> <%# gettext "Aguardando avaliação" %>
+                  <% else %> <%# >>>> if answer.score == nil do %>
+                    <p class="question-score__points"><%= answer.score %> <%= gettext "points" %></p>
+                    <figure class="question-score__fi">
+                      <%= if answer.score == 0 do %>
+                        <%= TriviumWeb.SvgView.render("_close.html") %>
+                      <% end %>
+                      <%= if answer.score != nil && answer.score > 0 do %>
+                        <%= TriviumWeb.SvgView.render("_checkmark.html") %>
+                      <% end %>
+                    </figure> <!-- answer-student__icon -->
+                  <% end %> <%# >>>> if answer.score == nil do %>
+                </div> <%# >>>> question-score__right %>
+              </div> <%# >>>> question-score__container %>
+            </div> <%# >>>> question-score %>
+          <% end %> <%# >>>> if @current_user.id == answer.user.id do %>
+        <% end %> <%# >>>> for answer <- @question.answers do %>
+
+      <% end %> <%# >>>> if @question.id in @user_answered_this_question do %>
+
+
+
+
+
+      <%= unless @question.id in @user_answered_this_question do %>
+        <%# >>>>>>>>>
+          DOES NOT HAVE AN ANSWER YET
+        >>>>>>>>>>> %>
+        <ul class="quizess" id="quizess" phx-hook="Quiz">
+          <%= for quiz <- @question.quizzes do %>
+            <li class="quiz" id="quiz-<%= quiz.id %>">
+              <div class="quiz__container">
+                <div class="quiz__layer--1">
+                  <div></div>
+                  <a class="quiz__anchor" href="#"
+                                          phx-click="quiz-an-answer"
+                                          phx-target="<%= @myself %>"
+                                          phx-value-quiz_id="<%= quiz.id %>"
+                                          phx-value-score="<%= @question.score %>"
+                                          phx-value-question_id="<%= @question.id %>"
+                                          phx-value-user_id="<%= @current_user.id %>"><%= quiz.quiz_text %></a>
+                </div>
+              </div> <%# >>>> quiz__container %>
+            </li> <%# >>>> quiz %>
+          <% end %> <%# >>>> for quiz <- @question.quizzes do %>
+        </ul> <%# >>>> quizess %>
+
+        <div class="spacer-24"></div>
+
+        <div class="question-score">
+          <div class="question-score__container">
+            <div class="question-score__left">
+              <p class="question-score__worth">
+                <%= gettext "Worth" %>
+                <span><%= @question.score %></span>
+                <%= gettext "points" %></p> <%# gettext "Vale" %> <%# gettext "pontos" %>
+            </div> <%# >>>> question-score__left %>
+            <div class="question-score__right"></div> <%# >>>> question-score__right %>
+          </div> <%# >>>> question-score__container %>
+        </div> <%# >>>> question-score %>
+
+      <% end %> <%# >>>> unless @question.id in @user_answered_this_question do %>
+
+
+    </div> <%# >>>> question__container %>
+  </div> <%# >>>> question %>
+
+</div> <%# >>>> content__media-width %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# >>>>  %>

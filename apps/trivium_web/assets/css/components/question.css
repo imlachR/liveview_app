@@ -1,0 +1,303 @@
+.question {
+  background: hsla(232, 54%, 11%, 1);
+  border-radius: .8rem;
+
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
+
+  @media (min-width: 920px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__container {
+    max-width: 51.2rem;
+    margin: 0 auto;
+    padding: 2rem 1.6rem; 
+
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  &__text {
+    border: none;
+    outline: none;
+
+    color: hsla(0, 0%, 100%, 1);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  &__score-qa-margin-top {
+    margin-top: 2.4rem;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__score-text {
+    float: left;
+
+    padding: .8rem 1.6rem;
+
+    background: hsla(0, 0%, 100%, .12);
+    border-radius: 1.6rem;
+
+    color: hsla(0, 0%, 100%, 1);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    letter-spacing: -0.02rem;
+  }
+
+  &__score-right {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.new-answer {
+  width: 100%;
+
+  &__wrapper {
+    background: var(--white);
+    border-radius: .4rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__textarea {
+    margin-bottom: 2.4rem;
+
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    z-index: 0;
+
+    width: 100%;
+    padding: .6rem 1rem;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+
+    color: hsla(232, 54%, 11%, 1);
+    caret-color: hsla(232, 54%, 11%, 1);
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    letter-spacing: -0.02rem;
+  }
+}
+
+.send {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 1;
+
+  align-self: end;
+  justify-self: end;
+
+  margin-right: 1rem;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  transform: translateY(2.7rem);
+}
+
+.question-toolbar {
+
+  &__container {
+    width: 100%;
+
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__side {
+    background-color: #fafafa;
+    border-radius: 1.6rem;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+
+    display: flex;
+  }
+
+  &__btn {
+    padding: .6rem 1.6rem;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 100%;
+
+    background: hsla(232, 54%, 11%, .1);
+  }
+
+  &__position {
+    padding-left: 2.4rem;
+    padding-right: 2.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: var(--dark);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__link {
+    padding: .6rem 1.6rem;
+
+    @media (min-width: 365px) {
+      padding: .6rem 1.6rem;
+    }
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+.question-score {
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__worth {
+    width: max-content;
+    padding: .8rem 1.6rem;
+
+    background: hsla(0, 0%, 100%, .12);
+    border-radius: 1.6rem;
+
+    color: hsla(0, 0%, 100%, 1);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    letter-spacing: -0.02rem;
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &__input {
+    width: 3.2rem;
+
+    margin-left: .4rem;
+    margin-right: .4rem;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: var(--font-primary);
+    color: hsla(0, 0%, 100%, 1);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    text-align: center;
+    letter-spacing: -0.02rem;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__points {
+    margin-right: 1.6rem;
+
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+    letter-spacing: -0.02rem;
+  }
+
+  &__fi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__evaluation {
+    color: hsla(0, 0%, 100%, .8);
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6rem;
+    letter-spacing: -0.02rem;
+  }
+}
+
+.qa-debug {
+  color: var(--silver);
+  font-size: 1.6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/

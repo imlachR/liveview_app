@@ -1,0 +1,68 @@
+.simplescroll {
+  width: 100%;
+  height: 4.8rem;
+  background: var(--silver);
+
+  display: grid;
+  overflow: hidden;
+
+  &__ul {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  &__li {
+    padding-right: 2.4rem;
+
+    flex-shrink: 0;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    &:first-child {
+      margin-left: 1.6rem;
+
+      @media (min-width: 768px) {
+        margin-left: 4.8rem;
+      }
+
+      @media (min-width: 1280px) {
+        margin-left: 6.4rem;
+      }
+    }
+
+    &:last-child {
+      padding-right: 1.6rem;
+    }
+  }
+
+  &__active {
+    color: hsla(232, 54%, 11%, 1);
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  &__inactive {
+    color: hsla(232, 54%, 11%, .4);
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+.show-me {
+  display: block;
+}
+
+.hide-me {
+  display: none;
+}

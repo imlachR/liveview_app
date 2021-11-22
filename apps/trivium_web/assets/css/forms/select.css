@@ -1,0 +1,10 @@
+.select {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-family: var(--font-primary);
+  color: var(--dark);
+  font-size: 1.6rem;
+  font-weight: 400;
+}

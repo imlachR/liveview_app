@@ -1,0 +1,11 @@
+.themes {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2.1rem;
+}
+
+.theme {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.1rem;
+}

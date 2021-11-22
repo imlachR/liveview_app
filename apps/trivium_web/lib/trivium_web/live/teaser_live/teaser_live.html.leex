@@ -1,0 +1,217 @@
+<div class="teaser">
+
+  <nav class="nav">
+    <div class="nav__left">
+      <p class="nav__title">
+        <%# gettext "teaser" %><!--<span class="nav__dot">.</span> -->
+      </p> <%# >>>>>>>>> nav__title %>
+    </div> <%# >>>>>>>>> nav__left %>
+    <div class="nav__right">
+      <a href="/" class="logo__16">
+        <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+      </a>
+      <div class="nav__right--links">
+        <%= if @current_user do %>
+          <%= link (gettext "exit"), to: Routes.user_session_path(@socket, :delete, locale: Gettext.put_locale(TriviumWeb.Gettext, @current_user.prefered_language)), method: :delete, class: "nav__link nav__link--margin" %>
+          <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+            <%= if @current_user.avatar != nil do %>
+              <figure class="nav__avatar--figure">
+                <img class="nav__avatar--img" src="<%= @current_user.avatar.url %>" alt="">
+              </figure>
+            <% else %>
+              <div class="nav__avatar--fallback">
+                <span><%= get_first_letter(@current_user.name) %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div> <%# >>>>>>>>> nav__right--links %>
+    </div> <%# >>>>>>>>> nav__right %>
+  </nav> <%# >>>>>>>>> nav %>
+
+  <section class="teaser-hero">
+    <div class="teaser-hero__lead-wrapper">
+      <h1 class="teaser-hero__lead">
+        <%= gettext "Docencia práctica," %>
+        <span class="teaser-hero__lead-block"><%= gettext "rápida y fácil." %></span>
+      </h1>
+    </div>
+    <figure class="teaser-hero__fig">
+      <img class="teaser-hero__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/responsive-en.png" alt="">
+    </figure>
+    <div class="teaser-hero__text-wrapper">
+      <h1 class="teaser-hero__text">
+        <%= gettext "Admite todos los tamaños de pantalla" %>
+        <span class="teaser-hero__text-grey"><%= gettext "Ex. Computadores, Laptops, tablets y celulares." %></span>
+      </h1>
+    </div>
+  </section> <%# >>>>>>>> teaser-section %>
+
+  <div class="teaser-phones">
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/multi-language-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Soporte Multi Lenguaje" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/root-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Interfaz Conversacional " %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/register-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Fácil de Registrarse" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/config-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Sencillo de Configurar" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/activities-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Actividades del alumno" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/friendly-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Interfaz Amigable" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/profile-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Perfil" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/menu-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Menú Práctico e Intuitivo" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/simple-form-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Comunicación clara con el Usuario" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/classroom-subjects-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Panel del Profesor" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/classroom-students-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Panel del Profesor" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/classroom-request-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Panel del Profesor" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <video class="teaser-phone__video" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/egypt-pt.mov" autoplay loop poster="https://d1j7twnp44fgl4.cloudfront.net/teaser/images-en.png"></video>
+        <legend class="teaser-phone__legend"><%= gettext "Multimedia" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/images-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Imagenes" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/audio-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Audio" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/videos-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Videos" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/iframe.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "iFrames" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <video class="teaser-phone__video" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/html-en.mov" autoplay loop poster="https://d1j7twnp44fgl4.cloudfront.net/teaser/code-editor-en.png"></video>
+        <legend class="teaser-phone__legend"><%= gettext "Paso a Paso" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/code-editor-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Editor de Código Fuente" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/quiz-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Seleccion Multiple" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/qa-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Preguntas y Respuestas " %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/flashcard-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Flashcards" %></legend>
+      </figure>
+    </section>
+
+    <section class="teaser-phone">
+      <figure class="teaser-phone__figure">
+        <img class="teaser-phone__img" src="https://d1j7twnp44fgl4.cloudfront.net/teaser/teacher-grading-en.png" alt="">
+        <legend class="teaser-phone__legend"><%= gettext "Fácil de evaluar a los alumnos" %></legend>
+      </figure>
+    </section>
+
+  </div> <%# >>>>>>>> teaser-phones %>
+
+  <div class="spacer-64"></div>
+
+</div> <%# >>>>>>>> teaser %>

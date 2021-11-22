@@ -1,0 +1,26 @@
+.logo {
+
+  &__16 {
+    color: hsla(240, 3%, 87%, 1);
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  &__t {
+    color: hsla(210, 100%, 56%, 1);
+  }
+
+  &__r {
+    color: hsla(49, 100%, 50%, 1);
+  }
+
+  &__i {
+    color: hsla(340, 90%, 51%, 1);
+  }
+
+  &__dot {
+    color: hsla(157, 75%, 53%, 1);
+  }
+}

@@ -1,0 +1,72 @@
+<div class="ff">
+  <div class="ff-layer-0 dark-bg">
+    <div class="ff__logo">
+      <%= TriviumWeb.SvgView.render("_logo-vertical-ff.html") %>
+    </div>
+  </div> <!-- ff-layer-0 -->
+
+  <div class="ff-layer-1">
+
+    <nav class="ff-nav">
+      <div class="ff-nav__left">
+        <%= link to: Routes.user_session_path(@conn, :new), class: "ff-nav__icon" do %>
+          <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+        <% end %>
+        <p class="ff-nav__title">
+          <%= gettext "forgot your password?" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__left -->
+
+      <div class="ff-nav__middle">
+        <p class="ff-nav__title-middle">
+          <%= gettext "forgot your password?" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__middle -->
+
+      <div class="ff-nav__right">
+        <a href="/" class="logo__16">
+          <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+        </a>
+      </div> <!-- ff-nav__right -->
+    </nav> <!-- ff-nav -->
+
+    <div class="ff-agent">
+      <div class="ff-agent__container">
+        <p class="ff-agent__message color-dark">
+          <%= gettext "Enter your e-mail and then press reset password" %>
+        </p>
+      </div>
+    </div>
+
+    <%= form_for :user, Routes.user_reset_password_path(@conn, :create), [class: "form"], fn f -> %>
+      <div class="form__container">
+        <div class="form__fields">
+
+          <div class="form__wrapper">
+            <div class="form__field">
+              <%= label f, :email, class: "form__label" do %>
+                <%= TriviumWeb.SvgView.render("_mail.html") %>
+              <% end %>
+              <%= email_input f, :email, required: true, class: "form__input", placeholder: "e-mail", autofocus: true %>
+            </div> <!-- form__field -->
+          </div> <!-- form__wrapper -->
+
+        </div> <!-- form__fields -->
+      </div> <%# >>>>>>>>> form__container %>
+
+      <div class="form__actions">
+        <div class="form__btn">
+          <div class="form__btn-shadow"></div>
+          <%= submit "reset", class: "form__btn-submit" %>
+        </div>
+      </div> <!-- form__actions -->
+
+      <div class="form__extra">
+        <%= link "Don't have an account? Register", to: Routes.user_registration_path(@conn, :new), class: "form__extra--link" %>
+        <%= link "Already have an account? Login", to: Routes.user_session_path(@conn, :new), class: "form__extra--link" %>
+      </div> <!-- form__extra -->
+
+    <% end %>
+
+  </div> <!-- ff-layer-1 -->
+</div> <!-- ff -->

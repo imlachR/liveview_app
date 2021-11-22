@@ -1,0 +1,27 @@
+<div class="agent-wrapper dark-bg">
+  <div class="agent">
+    <div class="agent__container">
+      <p class="agent__message">
+        <%= gettext "Hello" %> <%= first_name(@current_user.name) %>!
+        <%= gettext "let's configure your account" %>
+      </p> <%# agent__message %>
+    </div> <%# agent__container %>
+  </div> <%# agent %>
+</div> <%# agent-wrapper %>
+
+<div class="spacer-16 dark-bg"></div>
+
+<form class="handle-form" phx-submit="subscribe-by-handle" phx-target="<%= @myself %>">
+  <div class="handle-form__container">
+    <input class="handle-form__input" type="text" name="handle" value="<%= @handle %>" placeholder="<%= gettext "Type your code" %>" autocomplete="off">
+    <div class="handle-form__btn">
+      <span class="handle-form__shadow"></span>
+      <button class="handle-form__submit" type="submit" name="button">
+        <%= TriviumWeb.SvgView.render("_send-plane.html") %>
+      </button>
+    </div> <%# handle-form__btn %>
+  </div> <%# handle-form__container %>
+  <input type="hidden" name="user_id" value="<%= @current_user.id %>">
+</form> <%# handle-form %>
+
+<div class="sponsor-bg"></div>

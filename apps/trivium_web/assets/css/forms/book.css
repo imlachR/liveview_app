@@ -1,0 +1,7 @@
+.book {
+  width: 70%;
+  margin: 0 auto;
+
+  background: rgba(255, 255, 255, 1);
+  border-radius: .5rem;
+}

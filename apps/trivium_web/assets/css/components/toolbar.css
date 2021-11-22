@@ -1,0 +1,35 @@
+.toolbar {
+  padding-top: 1.6rem;
+
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
+
+  @media (min-width: 580px) {
+    grid-template-columns: 2.4rem 1fr 2.4rem;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 3.2rem 1fr 3.2rem;
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr repeat(5, 21.6rem) 1fr;
+    grid-gap: 1.81rem;
+  }
+
+  &__container {
+    grid-column: 2 / 3;
+
+    @media (min-width: 1280px) {
+      grid-column: 2 / 7;
+    }
+  }
+
+  &__right {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+}

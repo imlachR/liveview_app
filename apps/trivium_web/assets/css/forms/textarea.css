@@ -1,0 +1,28 @@
+.textarea-field {
+
+}
+
+.textarea {
+   padding-left: 1.6rem;
+   padding-right: 1.6rem;
+
+   background: hsla(0, 0%, 100%, 1);
+   border-radius: .8rem;
+   border: none;
+   outline: none;
+
+   color: hsla(232, 54%, 11%, 1);
+   font-family: var(--font-primary);
+   font-size: 1.6rem;
+   font-weight: 400;
+   line-height: 2.4rem;
+   letter-spacing: -0.02rem;
+   resize: none;
+
+   overflow: hidden;
+  /* resize: both; */
+
+   &:focus {
+    /* outline: none !important; */
+  }
+}

@@ -1,0 +1,72 @@
+<div class="v">
+  <%= if @loading == true do %>
+    <%= live_component @socket, TriviumWeb.LoaderComponent,
+                  id: "loader-#{@content.id}" %>
+  <% else %> <%# >>>>>> if @loading == true %>
+
+    <%= f = form_for @changeset, "#",
+        id: "form-video-#{@content.id}",
+        class: "form-video",
+        phx_target: @myself,
+        phx_change: "validate",
+        phx_submit: "upload" %>
+
+        <%= for {_ref, msg} <- @uploads.video.errors do %>
+          <p class="alert alert-danger"><%= Phoenix.Naming.humanize(msg) %></p>
+        <% end %>
+
+        <%= hidden_input f, :content_id, value: @content.id %>
+
+        <%= if @uploads.video.entries == [] do %>
+
+          <div class="content__standard-width">
+            <div class="form-image__fallback">
+              <div class="form-image__selector">
+                <figure class="form-image__fi">
+                  <%= TriviumWeb.SvgView.render("_video.html") %>
+                </figure>
+                <p class="form-image__text"><%= gettext "select a video file" %></p>
+              </div> <%# >>>>>> form-image__fallback %>
+              <%= live_file_input @uploads.video, class: "form-image__input" %>
+            </div> <%# >>>>>> form-image__fallback %>
+
+            <div class="spacer-24"></div>
+            <a href="#" class="form-image__link" phx-click="cancel-uploadform"><%= gettext "cancel" %></a>
+          </div> <%# >>>>>> content__standard-width %>
+
+        <% else %> <%# >>>>>> if @uploads.video.entries == [] do %>
+
+        <%= for entry <- @uploads.video.entries do %>
+          <div class="content__standard-width">
+              <div class="form-image__fallback">
+                <div class="form-image__selector">
+                  <figure class="form-image__fi">
+                    <%= TriviumWeb.SvgView.render("_video.html") %>
+                  </figure>
+                  <p class="form-image__text"><%= entry.client_name %></p>
+                </div> <%# >>>>>> form-image__fallback %>
+
+              </div> <%# >>>>>> form-image__fallback %>
+
+              <div class="spacer-24"></div>
+              <div class="form-image__ctas">
+                <p class="form-image__progress"><%= entry.progress %>%</p>
+                <%= submit (gettext "save"), phx_disable_with: "#{gettext "saving"}", class: "form-image__submit" %>
+                <a href="#" phx-click="cancel-entry"
+                            phx-value-ref="<%= entry.ref %>"
+                            phx-target="<%= @myself %>"
+                            class="form-image__link">
+                            cancel
+                          </a>
+              </div>
+            </div> <%# >>>>>> content__standard-width %>
+
+            <%= live_file_input @uploads.video, class: "form-image__hidden" %>
+        <% end %>
+
+        <% end %> <%# >>>>>> if @uploads.video.entries == [] do %>
+
+    </form>
+
+  <% end %> <%# >>>>>> if @loading == true %>
+</div>

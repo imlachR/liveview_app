@@ -1,0 +1,49 @@
+#shape-arrow-back {
+  fill: hsla(210, 100%, 56%, 1);
+  stroke: hsla(210, 100%, 56%, 1);
+}
+
+#shape-password {
+  fill: hsla(210, 100%, 56%, 1);
+}
+
+#shape-mail {
+  stroke: hsla(210, 100%, 56%, 1);
+}
+
+#shape-name {
+  stroke: hsla(210, 100%, 56%, 1); 
+}
+
+/* #shape-arrow-left {
+  stroke: hsla(240, 83%, 55%, 1);
+}
+
+#arrow-right {
+  stroke: var(--color-black);
+}
+
+#message-send {
+  stroke: var(--color-text);
+}
+
+#horizontal-menu {
+  fill: var(--color-text);
+}
+
+#search-icon {
+  stroke: #D4CBFE;
+}
+
+#shape-close {
+  stroke: var(--color-grey-dark);
+}
+
+#shape-image {
+  stroke: var(--color-text);
+}
+
+#shape-checkmark {
+  stroke: #06E775;
+}
+ */

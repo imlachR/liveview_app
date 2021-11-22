@@ -1,0 +1,37 @@
+.form {
+
+  &__file-field {
+    background: hsla(240, 6%, 93%, 1);
+    border-radius: .8rem;
+
+    height: 4.8rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  &__file-input {
+    margin-left: .8rem;
+    margin-right: .8rem;
+    color: hsla(232, 54%, 11%, 1);
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
+
+.file {
+
+  &__counter {
+    margin-left: 2.4rem;
+  }
+
+  &__percent {
+    visibility: hidden;
+
+    padding-left: .8rem;
+    color: hsla(232, 54%, 11%, 1);
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}

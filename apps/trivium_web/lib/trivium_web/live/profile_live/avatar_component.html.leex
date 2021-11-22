@@ -1,0 +1,78 @@
+<%= if @user.avatar != nil do %>
+<%# ###########################
+  HEAD 1
+############################# %>
+  <div class="profile-avatar">
+    <figure class="profile-avatar__fi">
+      <a href="#" phx-click="delete-avatar"
+                  phx-value-id="<%= @user.avatar.id  %>"
+                  phx-value-user="<%= @user.id %>"
+                  phx-target="<%= @myself %>"
+                  class="profile-avatar__delete">
+                  <%= TriviumWeb.SvgView.render("_close-circle-25x25.html") %>
+                </a>
+      <img class="profile-avatar__img" src="<%= @user.avatar.url %>" alt="<%= @user.name %>">
+    </figure>
+  </div>
+
+
+<% else %> <%# >>>>>>>>> if @user.avatar != nil do %>
+<%# ###########################
+  HEAD 1
+############################# %>
+
+  <%= f = form_for @changeset, "#",
+      id: "form-avatar-#{@user.id}",
+      class: "form-avatar",
+      phx_target: @myself,
+      phx_change: "validate",
+      phx_hook: "Profile",
+      phx_submit: "upload" %>
+
+      <%= for {_ref, msg} <- @uploads.photo.entries do %>
+        <p class="alert alert-danger"><%= Phoenix.Naming.humanize(msg) %></p>
+      <% end %>
+
+
+      <%= hidden_input f, :user_id, value: @user.id %>
+
+      <%= if @uploads.photo.entries == [] do %>
+        <figure class="form-avatar__fi">
+          <label class="form-avatar__label">
+            <%= TriviumWeb.SvgView.render("_fallback-80x80.html") %>
+          </label>
+          <%= live_file_input @uploads.photo, class: "form-avatar__input" %>
+        </figure>
+      <% else %> <%# >>>>> if @uploads.photo.entries == [] do %>
+        <%= for entry <- @uploads.photo.entries do %>
+          <div class="form-avatar__entry">
+            <a href="#" phx-click="cancel-entry"
+                        phx-value-ref="<%= entry.ref %>"
+                        phx-target="<%= @myself %>"
+                        class="form-avatar__delete">
+                        <%= TriviumWeb.SvgView.render("_close-circle-25x25.html") %>
+                      </a>
+
+            <figure class="form-avatar__figure">
+              <%= live_img_preview entry, class: "form-avatar__img" %>
+              <%= live_file_input @uploads.photo, class: "form-avatar__hidden" %>
+            </figure>
+
+
+          </div>
+        <% end %> <%# >>>>> for entry <- @uploads.photo.entries do %>
+      <% end %> <%# >>>>> if @uploads.photo.entries == [] do %>
+
+      <div class="spacer-32"></div>
+      <%= if @uploads.photo.entries != [] do %>
+        <div class="form-avatar__flex">
+          <%= submit (gettext "save"), phx_disable_with: "#{gettext "saving"}", class: "form-avatar__submit" %>
+        </div>
+      <% else %>
+        <div class="form-avatar__flex">
+          <p class="form-avatar__score"><%= @user_score %></p>
+        </div>
+      <% end %>
+  </form>
+
+<% end %> <%# >>>>> if @user.avatar != nil do %>

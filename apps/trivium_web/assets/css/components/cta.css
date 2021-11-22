@@ -1,0 +1,45 @@
+.cta {
+  margin: 3.2rem auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (min-width: 768px) {
+    max-width: 95%;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 85%;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1120px;
+  }
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  &__right {
+    display: none;
+
+    @media (min-width: 820px) {
+      display: block;
+    }
+  }
+
+  &__btn {
+    padding: 1.1rem 3.2rem;
+
+    border: 2px solid transparent;
+    border-radius: .5rem;
+
+    background: #0057ff;
+
+    outline: none;
+    font-size: var(--font-mini);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+}

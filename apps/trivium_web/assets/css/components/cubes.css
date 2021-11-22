@@ -1,0 +1,21 @@
+.cubes {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-gap: .4rem;
+
+  text-decoration: none;
+}
+
+.cube {
+  min-width: 19.36px;
+
+  padding: 0 .6rem;
+  border-radius: .4rem;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.no-visibility {
+  visibility: hidden;
+}

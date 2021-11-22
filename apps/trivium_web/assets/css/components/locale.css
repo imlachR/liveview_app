@@ -1,0 +1,50 @@
+.locale {
+
+  &__title {
+    color: var(--silver);
+    font-size: 1.4rem;
+  }
+
+  &__link {
+    width: 16rem;
+    height: 100%;
+
+    padding: .4rem 1.6rem;
+
+    background: #46495D;
+    border-radius: .8rem;
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__icon {
+    height: 100%;
+    margin-right: 1.2rem;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__language {
+    color: var(--white);
+    font-size: 1.4rem;
+  }
+
+  &__arrow {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+  }
+}

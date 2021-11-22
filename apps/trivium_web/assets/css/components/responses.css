@@ -1,0 +1,44 @@
+.responses-wrapper {
+  grid-column: 1 / -1;
+
+  background: hsla(232, 54%, 11%, 1);
+
+  display: grid;
+  grid-template-columns: 1.6rem 1.6rem 1fr 2.4rem 2.4rem 1fr 1.6rem 1.6rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 4.8rem 1fr 1fr 1fr 1fr 4.8rem;
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 6.4rem 15.53rem 1fr 1fr 15.53rem 6.4rem;
+  }
+}
+
+.responses {
+  grid-column: 2 / 8;
+
+  margin-top: 3.2rem;
+  padding-bottom: 2rem;
+  display: flex;
+}
+
+.response {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  &__yes {
+    margin-right: 8rem;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: hsla(157, 75%, 53%, 1);
+  }
+
+  &__no {
+    color: hsla(340, 90%, 51%, 1);
+  }
+}

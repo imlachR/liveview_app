@@ -1,0 +1,187 @@
+<ul class="activities-classrooms">
+  <%= for sub <- @user_subscriptions do %>
+    <li class="activities-classroom">
+
+      <%= if sub.accepted == false do %>
+        <%= link to: "#",
+                         phx_click: "select-classroom",
+                         phx_value_sub: sub.id,
+                         phx_value_classroom: get_classroom_info_by(sub.classroom_id).id,
+                         phx_target: @myself,
+                         class: (if sub.id == @selected_subscription.id, do: "act__link act__active", else: "act__link act__offline-inactive") do %>
+            <span><%= get_classroom_info_by(sub.classroom_id).name %></span>
+            <span class="act__circle offline-bg"></span>
+        <% end %>
+      <% end %>
+
+      <%= if sub.accepted == true do %>
+        <div class="act__container">
+          <%= link to: "#",
+                           phx_click: "select-classroom",
+                           phx_value_sub: sub.id,
+                           phx_value_classroom: get_classroom_info_by(sub.classroom_id).id,
+                           phx_target: @myself,
+                           class: (if sub.id == @selected_subscription.id, do: "act__link act__active", else: "act__link act__online-inactive") do %>
+              <span><%= get_classroom_info_by(sub.classroom_id).name %></span>
+              <span class="act__circle green-bg"></span>
+          <% end %>
+          <%= if sub.policy == "teacher" do %>
+            <%= if sub.id == @selected_subscription.id do %>
+              <%= live_redirect to: Routes.classroom_show_path(@socket, :show, sub.classroom_id), class: "act__teacher" do %>
+                <%= TriviumWeb.SvgView.render("_extra-link.html") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul> <%# >>>>>>> activities-classrooms %>
+
+<div class="spacer-32 dark-bg"></div>
+
+<div class="a">
+  <%= if @selected_subscription.accepted == true do %>
+
+    <%# >>>>>>>>> ACCEPTED TO CLASSROOM >>>>>>>>>>> %>
+    <div class="activities-student">
+      <div class="tabs dark-bg">
+        <div class="tabs__container">
+          <div class="tabs__left">
+            <ul class="tabs__ul">
+              <li class="tab">
+                <a class="<%= if @current_view == "tasks", do: "tab__active", else: "tab__inactive" %>"
+                   href="#"
+                   phx-click="go-to-tasks"
+                   phx-value-id="<%= @selected_classroom.id %>"
+                   phx-target="<%= @myself %>">
+                   <span class="<%= if @current_view == "tasks", do: "tab__count-active crimson-bg", else: "tab__count-inactive" %>"><%= Enum.count(get_user_tasks(@current_user, @selected_classroom)) %></span>
+                   <%= gettext "tasks" %>
+                </a>
+              </li>
+              <li class="tab">
+                <a class="<%= if @current_view == "done", do: "tab__active", else: "tab__inactive" %>"
+                  href="#"
+                  phx-click="go-to-done"
+                  phx-value-id="<%= @selected_classroom.id %>"
+                  phx-target="<%= @myself %>">
+                    <span class="<%= if @current_view == "done", do: "tab__count-active green-bg dark-text", else: "tab__count-inactive" %>"><%= Enum.count(@completeds) %></span>
+                    <%= gettext "done" %>
+                </a>
+              </li>
+            </ul> <%# >>>>> tabs__ul %>
+
+          </div> <%# >>>>> tabs__left %>
+          <div class="tabs__right"></div> <%# >>>>> tabs__right %>
+        </div> <%# >>>>> tabs__container %>
+      </div> <%# >>>>> tabs %>
+
+      <div class="spacer-20 dark-bg"></div>
+
+      <div class="simplescroll">
+        <%= if subjects_from(@selected_classroom) == [] do %>
+          <ul class="simplescroll__ul">
+            <li class="simplescroll__li"><span class="simplescroll__inactive">Wow, such empty :(</span></li>
+          </ul>
+        <% else %>
+          <ul class="simplescroll__ul">
+            <li class="simplescroll__li"><a href="#" phx-click="select-subject-all" phx-target="<%= @myself %>" class="<%= if @selected_subject == "all", do: "simplescroll__active", else: "simplescroll__inactive" %>"><%= gettext "All" %></a></li>
+            <%= for subject <- @subjects do %>
+              <li class="simplescroll__li">
+                <%= link subject.name, to: "#",
+                                  phx_click: "select-subject",
+                                  phx_value_subject: subject.slug,
+                                  phx_target: @myself,
+                                  class: (if subject.slug == @selected_subject, do: "simplescroll__active", else: "simplescroll__inactive") %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div> <%# >>>>>>> simplescroll %>
+
+    </div> <%# student-activities %>
+
+    <div class="spacer-40"></div>
+
+    <%= if @current_view == "tasks" do %>
+      <%= if @selected_subject == "all" do %>
+        <ul class="simple-cards">
+          <%= for concept <- @concepts do %>
+            <li class="simple-card <%= retrieve_subject_from(concept) %>" id="simple-card-<%= concept.id %>">
+              <div class="simple-card__bg">
+                <span class="simple-card__bg--letters simple-card__bg--grey"><%= get_3_letters(concept.name) %></span>
+              </div> <%# >>>> simple-card__bg %>
+              <div class="simple-card__container">
+                <%= live_redirect to: Routes.content_show_path(@socket, :show, concept, get_first_content(concept)), class: "simple-card__top" do %>
+                  <span class="simple-card__title"><%= concept.name %></span>
+                <% end %>
+              </div> <%# >>>> simple-card__container %>
+            </li> <%# >>>> simple-card %>
+          <% end %> <%# >>>> @concepts %>
+        </ul> <%# >>>> simple-cards %>
+      <% else %>
+        <ul class="simple-cards">
+          <%= for concept <- @concepts do %>
+            <li class="<%= if @selected_subject == "#{retrieve_subject_from(concept)}", do: "simple-card", else: "hide-me" %>" id="simple-card-<%= concept.id %>">
+              <div class="simple-card__bg">
+                <span class="simple-card__bg--letters simple-card__bg--grey"><%= get_3_letters(concept.name) %></span>
+              </div> <%# >>>> simple-card__bg %>
+              <div class="simple-card__container">
+                <%= live_redirect to: Routes.content_show_path(@socket, :show, concept, get_first_content(concept)), class: "simple-card__top" do %>
+                  <span class="simple-card__title"><%= concept.name %></span>
+                <% end %>
+              </div> <%# >>>> simple-card__container %>
+            </li> <%# >>>> simple-card %>
+          <% end %> <%# >>>> @concepts %>
+        </ul> <%# >>>> simple-cards %>
+      <% end %> <%# >>>> @selected_subject == "all" %>
+    <% end %> <%# >>>>>>> @current_view == "tasks" %>
+
+    <%= if @current_view == "done" do %>
+      <%= if @selected_subject == "all" do %>
+        <ul class="simple-cards">
+          <%= for completed <- @completeds do %>
+            <li class="simple-card" id="simple-card-<%= completed.id %>">
+              <div class="simple-card__bg">
+                <span class="simple-card__bg--letters simple-card__bg--grey"><%= get_3_letters(completed.name) %></span>
+              </div> <%# >>>> simple-card__bg %>
+              <div class="simple-card__container">
+                <%= live_redirect to: Routes.content_show_path(@socket, :show, completed, get_first_content(completed)), class: "simple-card__top" do %>
+                  <span class="simple-card__title"><%= completed.name %></span>
+                <% end %>
+              </div> <%# >>>> simple-card__container %>
+            </li> <%# >>>> simple-card %>
+          <% end %> <%# >>>> @completed %>
+        </ul> <%# >>>> simple-cards %>
+      <% else %>
+        <ul class="simple-cards">
+          <%= for completed <- @completeds do %>
+            <li class="<%= if @selected_subject == "#{retrieve_subject_from(completed)}", do: "simple-card", else: "hide-me" %>" id="simple-card-<%= completed.id %>">
+              <div class="simple-card__bg">
+                <span class="simple-card__bg--letters simple-card__bg--grey"><%= get_3_letters(completed.name) %></span>
+              </div> <%# >>>> simple-card__bg %>
+              <div class="simple-card__container">
+                <%= live_redirect to: Routes.content_show_path(@socket, :show, completed, get_first_content(completed)), class: "simple-card__top" do %>
+                  <span class="simple-card__title"><%= completed.name %></span>
+                <% end %>
+              </div> <%# >>>> simple-card__container %>
+            </li> <%# >>>> simple-card %>
+          <% end %> <%# >>>> @completed %>
+        </ul> <%# >>>> simple-cards %>
+      <% end %>
+    <% end %> <%# >>>>>>>> @current_view == "done" %>
+
+  <% else %> <%# >>>>> if @selected_subscription.accepted == true do %>
+    <%# >>>>>>>>> NOT ACCEPTED TO CLASSROOM YET >>>>>>>>>>> %>
+    <div class="agent-wrapper dark-bg">
+      <div class="agent">
+        <div class="agent__container">
+          <p class="agent__message">
+            <%= gettext "Awaiting your teacher to accept your request" %>
+          </p> <%# agent__message %>
+        </div> <%# agent__container %>
+      </div> <%# agent %>
+    </div> <%# agent-wrapper %>
+    <div class="spacer-20 dark-bg"></div>
+  <% end %> <%# >>>>> if @selected_subscription.accepted == true do %>
+</div> <%# >>>>> a %>

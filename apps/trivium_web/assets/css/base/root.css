@@ -1,0 +1,11 @@
+:root {
+  --font-primary: 'Inter', sans-serif;
+
+  --dark: hsla(232, 54%, 11%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --silver: hsla(240, 3%, 87%, 1);
+  --marine: hsla(220, 100%, 50%, 1);
+  --yellow: hsla(49, 100%, 50%, 1);
+  --green: hsla(163, 91%, 63%, 1); 
+  --crimson: hsla(340, 90%, 51%, 1);
+}

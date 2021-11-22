@@ -1,0 +1,47 @@
+.users {
+  padding: 8rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.6rem;
+}
+
+.user {
+  display: flex;
+
+  &__figure {
+    background: hsla(240, 3%, 87%, 1);
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: block;
+      padding-top: 1px;
+      padding-left: 1px;
+      color: hsla(220, 100%, 50%, 1);
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 100%;
+  }
+
+  &__name {
+    font-size: 1.6rem;
+  }
+
+  &__email {
+    font-size: 1.6rem;
+  }
+
+  &__link {
+    color: var(--marine);
+    font-size: 1.6rem;
+  }
+}

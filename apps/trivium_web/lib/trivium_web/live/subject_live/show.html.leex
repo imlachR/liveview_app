@@ -1,0 +1,140 @@
+<nav class="nav dark-bg">
+  <div class="nav__container">
+    <div class="nav__left">
+      <%= live_redirect to: Routes.classroom_show_path(@socket, :show, @subject.classroom.id), class: "nav__icon" do %>
+        <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+      <% end %>
+    </div> <%# >>>>>>>>> nav__left %>
+    <div class="nav__right">
+      <a href="/" class="logo__16">
+        <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+      </a>
+      <ul class="nav__ul">
+        <li class="nav__li">
+          <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+            <%= if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__figure">
+                  <img class="nav-avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+                </figure>
+              </div>
+            <% else %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__fi">
+                  <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                </figure>
+              </div>
+            <% end %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+          <% end %> <%# >>>>>>>>> Routes.profile_show_path %>
+        </li>
+        <li class="nav__li">
+          <%= link (gettext "exit"),
+              to: Routes.user_session_path(@socket,
+                                           :delete,
+                                           locale: Gettext.put_locale(TriviumWeb.Gettext,
+                                                                      @current_user.prefered_language)),
+                                                                      method: :delete, class: "nav__link" %>
+        </li>
+      </ul> <%# >>>>>>>>> nav__right--links %>
+    </div> <%# >>>>>>>>> nav__right %>
+  </div>
+</nav> <%# >>>>>>>>> nav %>
+
+<div class="spacer-32 dark-bg"></div>
+
+<div class="heading dark-bg">
+  <div class="heading__container">
+    <h1 class="heading__title"><%= @subject.name %><span class="heading__dot">.</span></h1>
+  </div>
+</div> <%# >>>>>>>>> heading %>
+
+<div class="spacer-16 dark-bg"></div>
+
+<div class="tags dark-bg">
+  <div class="tags__container">
+    <p class="tag">
+      <%= @subject.classroom.name %>
+    </p>
+    <p class="tag">
+      <%= @subject.classroom.institution.name %>
+    </p>
+  </div>
+</div> <%# >>>>>>>>> tags %>
+
+<div class="spacer-40 dark-bg"></div>
+
+<div class="agent-wrapper dark-bg">
+  <div class="agent">
+    <div class="agent__container">
+      <p class="agent__message">
+        <%= gettext "Select a concept" %>
+      </p> <%# agent__message %>
+    </div> <%# agent__container %>
+  </div> <%# agent %>
+</div> <%# agent-wrapper %>
+
+<div class="spacer-20 dark-bg"></div>
+
+<div class="spacer-40"></div>
+
+<div class="horizontal-wrapper">
+  <div class="horizontal-cards">
+    <%= for lesson <- list_lessons(@subject) do %>
+      <div class="horizontal-card">
+        <div class="horizontal-card__container">
+          <p class="horizontal-card__title"><%= lesson.name %></p>
+          <%= if @current_user.role == "root" || @current_user.role == "sales" do %>
+            <div class="dropdown horizontal-card__mr">
+              <button class="dropdown__btn"><%= TriviumWeb.SvgView.render("_menu.html") %></button>
+              <div class="dropdown__content">
+                <%= live_redirect (gettext "add concept"), to: Routes.concept_new_path(@socket, :new, lesson_id: lesson.id, subject_id: lesson.subject_id), class: "dropdown__link" %>
+                <%= live_redirect (gettext "edit"), to: Routes.lesson_edit_path(@socket, :edit, lesson), class: "dropdown__link" %>
+                <%= link (gettext "delete"), to: "#", phx_click: "delete-lesson", phx_value_id: lesson.id, data: [confirm: "Are you sure?"], class: "dropdown__link" %>
+              </div> <%# >>>>>>>> dropdown__content %>
+            </div> <%# >>>>>>>> dropdown %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="viewport">
+        <div class="list">
+          <%= for concept <- list_concepts(lesson) do %>
+            <%= if get_first_content(concept) != nil do %>
+              <div class="item">
+                <div class="item__bg">
+                  <span><%= get_3_letters(concept.name) %></span>
+                </div> <%# >>>>>>>> item__bg %>
+
+                <div class="item__container">
+                  <%= live_redirect to: Routes.content_show_path(@socket, :show, concept, get_first_content(concept)), class: "item__top" do %>
+                    <span class="item__title"><%= concept.name %></span>
+                  <% end %>
+
+                  <%= if @current_user.role == "root" || @current_user.role == "sales" do %>
+                    <div class="item__bottom">
+                      <%= live_redirect (gettext "edit"), to: Routes.concept_edit_path(@socket, :edit, concept), class: "item__edit" %>
+                      <%= link (gettext "delete"), to: "#", phx_click: "delete-concept", phx_value_id: concept.id, data: [confirm: "Are you sure?"], class: "item__delete" %>
+                    </div> <%# >>>>>>>> item__bottom %>
+                  <% end %>
+                </div> <%# >>>>>>>> item__container %>
+              </div> <%# >>>>>>>> item %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div> <%# horizontal-cards %>
+</div> <%# horizontal-wrapper %>
+
+
+<%= live_component @socket, TriviumWeb.MenuComponent, current_user: @current_user, link_path: Routes.lesson_new_path(@socket, :new, subject_id: @subject.id) %>

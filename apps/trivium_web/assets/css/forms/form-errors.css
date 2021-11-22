@@ -1,0 +1,29 @@
+.form-error {
+  width: 90%;
+  max-width: 38rem;
+  height: 100%;
+  margin: 0 auto;
+
+  padding-top: 1.6rem;
+
+  display: flex;
+
+  p {
+    padding: .8rem 1.6rem;
+
+    border-radius: .3rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    border: 1.5px solid transparent;
+    border-radius: .8rem;
+    border-bottom-left-radius: 0;
+
+    background:
+        linear-gradient(to right, #fff, #fff),
+        linear-gradient(90deg, #C31162 20.33116883116883%, #C31162 20.33116883116883%,#FF3A44 80.33116883116881%);
+
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+}

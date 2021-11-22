@@ -1,0 +1,102 @@
+<div class="ff">
+  <div class="ff-layer-0 dark-bg">
+    <div class="ff__logo">
+      <%= TriviumWeb.SvgView.render("_logo-vertical-ff.html") %>
+    </div>
+  </div> <!-- ff-layer-0 -->
+
+  <div class="ff-layer-1">
+
+    <nav class="ff-nav">
+      <div class="ff-nav__left">
+        <a href="/" class="ff-nav__icon">
+          <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+        </a>
+
+        <p class="ff-nav__title">
+          <%= gettext "new classroom code" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__left -->
+      <div class="ff-nav__middle">
+        <p class="ff-nav__title-middle">
+          <%= gettext "new classroom code" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__middle -->
+      <div class="ff-nav__right">
+        <a href="/" class="logo__16">
+          <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+        </a>
+      </div> <!-- ff-nav__right -->
+    </nav> <!-- ff-nav -->
+
+    <div class="ff-agent">
+      <div class="ff-agent__container">
+        <p class="ff-agent__message color-dark">
+          <%= gettext "Type the new classroom code and then click apply" %>
+        </p>
+      </div>
+    </div>
+
+    <form class="form" phx-submit="new-subscription">
+      <div class="form__container">
+
+        <div class="form__fields">
+
+          <div class="form__wrapper">
+            <div class="form__field">
+              <label for="" class="form__label">
+                <%= TriviumWeb.SvgView.render("_name.html") %>
+              </label>
+              <input class="form__input" type="text" name="handle" value="<%= @handle %>" placeholder="<%= gettext "Type your code" %>" autocomplete="off" autofocus>
+            </div> <%# >>>>>> form__field %>
+            <%= if @found != nil do %>
+              <div class="form__input-error">
+                <p class="color-dark"><%= @found %></p>
+              </div> <%# >>>>>> form__input-error %>
+            <% end %>
+          </div> <%# >>>>>> form__wrapper %>
+
+        </div> <%# >>>>>> form__fields %>
+      </div> <%# >>>>>> form__container %>
+
+      <div class="form__actions">
+        <div class="form__btn">
+          <div class="form__btn-shadow"></div>
+          <button class="form__btn-submit" type="submit" name="button">apply</button>
+        </div>
+      </div> <!-- form__actions -->
+
+    </form> <%# >>>>> form %>
+
+    <%# clear communication with the user (robot bubble message) %>
+    <%# clear communication with the user (classroom not found, try again) %>
+    <%# clear communication with the user (classroom added successfully) %>
+
+  </div> <%# >>>>>>> ff-layer-1 %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- ff -->

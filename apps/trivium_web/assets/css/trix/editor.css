@@ -1,0 +1,22 @@
+trix-editor {
+  grid-column: 2 / 3;
+
+  min-height: 80%;
+
+  background: hsla(0, 0%, 100%, 1);
+  border-radius: .8rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  padding-top: 1.6rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  padding-bottom: 10rem;
+
+  border: 1px solid transparent;
+  outline: none;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+}

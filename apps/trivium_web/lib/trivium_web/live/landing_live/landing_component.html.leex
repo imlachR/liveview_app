@@ -1,0 +1,150 @@
+<div class="landing">
+
+  <div class="landing-layer-0 dark-bg">
+    <div class="landing-layer-0__container"> 
+      <img class="landing-layer-0__logo-vertical" src="./images/logo-mobile-vertical.svg" alt="">
+    </div>
+  </div> <%# >>>>>>> landing-layer-0 %>
+
+  <div class="landing-layer-1">
+
+    <div class="landing__mobile">
+
+      <nav class="landing__mobile-nav">
+        <div class="locale">
+          <span class="locale__title"><%= gettext "Choose a language" %></span>
+          <div class="spacer-8"></div>
+          <a href="#" id="locale-link" class="locale__link">
+            <div>
+              <%= cond do %>
+                <% Gettext.get_locale(TriviumWeb.Gettext) == "es" -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_es_flag.html") %>
+                  </figure>
+                  <span class="locale__language">Español</span>
+                <% Gettext.get_locale(TriviumWeb.Gettext) == "pt_BR" -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_br_flag.html") %>
+                  </figure>
+                  <span class="locale__language">Português</span>
+                <% true -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_us_flag.html") %>
+                  </figure>
+                  <span class="locale__language">English</span>
+              <% end %>
+            </div>
+            <figure class="locale__arrow">
+              <%= TriviumWeb.SvgView.render("_arrow_link_silver.html") %>
+            </figure>
+          </a>
+        </div> <%# >>>>>> locale %>
+
+        <div class="spacer-40"></div>
+
+        <ul class="arrow-link">
+          <li class="arrow-link__li">
+            <a href="mailto:r@triviumlms.com" class="arrow-link__link">
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "Learn more" %></span>
+            </a>
+          </li>
+          <div class="spacer-24"></div>
+          <li class="arrow-link__li">
+            <a href="mailto:r@triviumlms.com" class="arrow-link__link">
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "Contact us" %></span>
+            </a>
+          </li>
+        </ul> <%# >>>>> arrow-link %>
+      </nav> <%# >>>>> landing__mobile-nav %>
+
+      <div class="landing__mobile-qa">
+        <h1 class="landing__mobile-question">
+          <span class="landing__mobile-welcome"><%= gettext "Welcome" %>!</span>
+          <%= gettext "Do you already have an account with us?" %>
+        </h1>
+        <div class="spacer-48"></div>
+        <div class="landing__mobile-answers">
+          <div>
+            <%= link (gettext "yes"), to: Routes.user_session_path(@socket, :new), class: "landing__mobile-link green-text" %>
+            <%= link (gettext "no"), to: Routes.user_registration_path(@socket, :new), class: "landing__mobile-link crimson-text" %>
+          </div>
+        </div>
+      </div> <%# >>>>> landing__mobile-question %>
+
+    </div> <%# >>>>>>> landing__mobile %>
+
+    <div class="landing__desktop">
+      <div>
+        <h1 class="landing__desktop-question silver-text">
+          <span class="landing__desktop-welcome"><%= gettext "Welcome" %>!</span> <%# gettext "Seja bem-vindo" %>
+          <%= gettext "Do you already have an account with us?" %> <%# gettext "Você já tem uma conta conosco?" %>
+        </h1>
+        <div class="spacer-32"></div>
+        <div class="landing__desktop-answers">
+          <%= link (gettext "yes"), to: Routes.user_session_path(@socket, :new), class: "landing__desktop-link green-text" %> <%# "sim" %> <%# "não" %>
+          <%= link (gettext "no"), to: Routes.user_registration_path(@socket, :new), class: "landing__desktop-link crimson-text" %>
+        </div>
+      </div>
+
+      <footer class="landing__desktop-footer">
+        <div class="locale">
+          <span class="locale__title"><%= gettext "Choose a language" %></span>
+          <div class="spacer-8"></div>
+          <a href="#" id="locale-link-desktop" class="locale__link">
+            <div>
+              <%= cond do %>
+                <%= Gettext.get_locale(TriviumWeb.Gettext) == "es" -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_es_flag.html") %>
+                  </figure>
+                  <span class="locale__language">Español</span>
+                <%= Gettext.get_locale(TriviumWeb.Gettext) == "pt_BR" -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_br_flag.html") %>
+                  </figure>
+                  <span class="locale__language">Português</span>
+                <% true -> %>
+                  <figure class="locale__icon">
+                    <%= TriviumWeb.SvgView.render("_us_flag.html") %>
+                  </figure>
+                  <span class="locale__language">English</span>
+              <% end %>
+            </div>
+            <figure class="locale__arrow">
+              <%= TriviumWeb.SvgView.render("_arrow_link_silver.html") %>
+            </figure>
+          </a>
+        </div> <%# >>>>>> locale %>
+
+        <ul class="arrow-link-flex">
+          <li class="arrow-link-flex__li">
+            <a href="mailto:r@triviumlms.com" class="arrow-link__link">
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "Learn more" %></span>
+            </a>
+          </li>
+
+          <li class="arrow-link__li">
+            <a href="mailto:r@triviumlms.com" class="arrow-link__link">
+              <figure class="arrow-link__arrow">
+                <%= TriviumWeb.SvgView.render("_arrow_link_blue.html") %>
+              </figure>
+              <span><%= gettext "Contact us" %></span>
+            </a>
+          </li>
+        </ul> <%# >>>>> arrow-link %>
+
+      </footer>
+    </div> <%# >>>>>>> landing__desktop %>
+
+  </div> <%# >>>>>> landing-layer-1 %>
+
+</div> <%# >>>>>> landing %>

@@ -1,0 +1,165 @@
+.presence {
+  grid-column: 1 / -1;
+
+  background: hsla(232, 54%, 11%, 1);
+}
+
+.presence__ul {
+  list-style: none;
+
+  display: flex;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+}
+
+.presence__li {
+  margin-right: 3.2rem;
+
+  display: grid;
+  justify-content: center;
+}
+
+.presence__li:first-child {
+  padding-left: 1.6rem;
+
+  /* @media (min-width: 520px) {
+    padding-left: 2.4rem;
+  } */
+
+  @media (min-width: 768px) {
+    padding-left: 4.8rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: 6.4rem;
+  }
+}
+
+.presence__fallback {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    background: hsla(240, 3%, 87%, 1);
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.presence__figure {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.presence__img {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.presence__initial {
+  display: block;
+  padding-top: 1px;
+  padding-left: 2px;
+  color: hsla(220, 100%, 50%, 1);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.presence__title {
+  margin-top: .8rem;
+
+  color: hsla(240, 3%, 87%, 1);
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+}
+
+.presence__score-teacher {
+  margin-top: .8rem;
+  padding: .4rem 1.6rem;
+
+  background: hsla(210, 100%, 56%, 1);
+  border-radius: 1.6rem;
+
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.presence__score-student {
+  margin-top: .8rem;
+  padding: .4rem 1.6rem;
+
+  background: var(--green);
+  border-radius: 1.6rem;
+
+  color: var(--dark);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.presence__delete {
+  height: 2.8rem;
+  padding: .4rem .8rem;
+
+  background: hsla(340, 90%, 51%, 1);
+  border-radius: .8rem;
+
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+}
+
+.presence__policy {
+  height: 2.8rem;
+  padding: .4rem .8rem;
+
+  background: var(--silver);
+  border-radius: .8rem;
+
+  color: var(--dark);
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+}

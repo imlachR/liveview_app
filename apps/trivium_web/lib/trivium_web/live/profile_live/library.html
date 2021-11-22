@@ -1,0 +1,71 @@
+<div class="">
+  <div class="">
+    <%= if @user.avatar != nil do %>
+      <figure class="xprofile__figure">
+        <a href="#" phx-click="delete-avatar"
+                    phx-value-id="<%= @user.avatar.id  %>"
+                    phx-value-user="<%= @user.id %>"
+                    phx-target="<%= @myself %>"
+                    class="xprofile__delete">
+                    <%= TriviumWeb.SvgView.render("_x-mini-pink.html") %>
+                  </a>
+        <img class="xprofile__img" src="<%= @user.avatar.url %>" alt="<%= @user.name %>">
+      </figure>
+    <% else %>
+
+      <%= f = form_for @changeset, "#",
+          id: "form-avatar-#{@user.id}",
+          phx_target: @myself,
+          phx_change: "validate",
+          phx_hook: "Profile",
+          phx_submit: "upload" %>
+
+        <%= for {_ref, msg} <- @uploads.photo.entries do %>
+          <p class="alert alert-danger"><%= Phoenix.Naming.humanize(msg) %></p>
+        <% end %>
+
+        <%= live_file_input @uploads.photo, class: "profile-input" %>
+        <%= hidden_input f, :user_id, value: @user.id %>
+
+        <%= if @uploads.photo.entries == [] do %>
+          <label id="profile-label" class="xprofile__label">
+            <%= TriviumWeb.SvgView.render("_fallback-80x80.html") %>
+          </label>
+        <% else %>
+          <%= for entry <- @uploads.photo.entries do %>
+            <figure class="xprofile__figure">
+              <a href="#" phx-click="cancel-entry"
+                          phx-value-ref="<%= entry.ref %>"
+                          phx-target="<%= @myself %>"
+                          class="xprofile__delete">
+                          <%= TriviumWeb.SvgView.render("_x-mini-pink.html") %>
+                        </a>
+              <%= live_img_preview entry, class: "xprofile__img" %>
+              <div class="xprofile__progress" style="width:calc(100% - <%= entry.progress %>%)"></div>
+            </figure>
+          <% end %>
+        <% end %>
+
+        <div class="spacer-20 dark-bg"></div>
+
+        <%= if @uploads.photo.entries != [] do %>
+          <%= submit "#{gettext "upload"}", phx_disable_with: "#{gettext "UPLOADING"}", class: "xprofile__submit" %>
+        <% else %>
+          <div class="spacer-20 dark-bg"></div>
+        <% end %>
+      </form>
+
+    <% end %>
+  </div>
+
+
+  <div class="">
+    <span><%# inspect @user.answers %> <%# user_score(@user.answers) %></span>
+  </div>
+
+</div> <%# >>>>>>>>  %>
+
+
+
+
+<%# live_redirect "editar", to: Routes.profile_edit_path(@socket, :edit, @user.id), class: "item__edit" %>

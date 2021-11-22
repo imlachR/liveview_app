@@ -1,0 +1,39 @@
+.arrow-link {
+  list-style: none;
+
+  &__li {
+
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    span {
+      color: var(--silver);
+      font-size: 1.4rem;
+      letter-spacing: .4px;
+    }
+  }
+
+  &__arrow {
+    margin-right: 1.6rem;
+
+    display: flex;
+    align-items: center;
+  }
+}
+
+.arrow-link-flex {
+  height: 100%;
+  list-style: none;
+
+  display: flex;
+  align-items: flex-end;
+
+  &__li:first-child {
+    margin-right: 8rem;
+  }
+}

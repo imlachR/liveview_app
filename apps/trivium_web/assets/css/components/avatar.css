@@ -1,0 +1,45 @@
+.avatar {
+  display: flex;
+  align-items: center;
+
+  &__fi {
+    display: flex;
+    align-items: center;
+  }
+
+  &__figure {
+    width: 4.6rem;
+    height: 4.6rem;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 4.6rem;
+    height: 4.6rem;
+    
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__score {
+    margin-left: .8rem;
+  }
+
+  &__text {
+    width: 100%;
+    padding: .4rem 1rem;
+
+    background: var(--green);
+    border-radius: 1.6rem;
+
+    color: var(--dark);
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: right;
+  }
+}

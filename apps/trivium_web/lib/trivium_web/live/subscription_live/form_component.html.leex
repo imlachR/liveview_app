@@ -1,0 +1,15 @@
+<%= f = form_for @changeset, "#",
+    id: "new-subscription",
+    class: "responses-wrapper",
+    phx_target: @myself,
+    phx_change: "validate",
+    phx_submit: "save" %>
+
+    <%= hidden_input f, :classroom_id, value: @classroom.id %>
+    <%= hidden_input f, :user_id, value: @current_user.id %>
+
+    <div class="responses">
+      <%= submit "sim", phx_disable_with: "ok", class: "response response__yes" %>
+      <%= link "não", to: Routes.institution_show_path(@socket, :show, @classroom.institution.id), class: "response response__no" %>
+    </div>
+  </form>

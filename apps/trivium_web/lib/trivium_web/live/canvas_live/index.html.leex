@@ -1,0 +1,30 @@
+<nav class="nav">
+  <div class="nav__left">
+    <p class="nav__title">
+      cuadro<span class="nav__dot">.</span>
+    </p>
+  </div> <!-- nav__left -->
+  <div class="nav__right">
+    <a href="/" class="logo__16">
+      <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+    </a>
+    <div class="nav__right--links">
+      <%= link "sair", to: Routes.user_session_path(@socket, :delete), method: :delete, class: "nav__link nav__link--margin" %>
+      <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__avatar--fallback" do %>
+        <span><%= get_first_letter(@current_user.name) %></span>
+      <% end %>
+    </div>
+  </div> <!-- nav__right -->
+</nav> <!-- nav -->
+
+<div id="canvas-toolbar">
+  <div class="rad">
+    Radius <span id="radval">10</span>
+    <div id="decrad" class="radcontrol">-</div>
+    <div id="incrad" class="radcontrol">+</div>
+  </div>
+  <div id="colors"></div>
+</div>
+<canvas id="canvas" phx-hook="Canvas">
+  Sorry, your browser is rubbish.
+</canvas>

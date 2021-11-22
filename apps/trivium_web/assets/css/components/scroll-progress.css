@@ -1,0 +1,14 @@
+.scroll-progress {
+
+  &__container {
+    width: 100%;
+    height: .3rem;
+    background: hsla(240, 3%, 87%, 1);
+  }
+
+  &__progress-bar {
+    height: .3rem;
+    background: hsla(157, 75%, 53%, 1);
+    width: 0%;
+  }
+}

@@ -1,0 +1,75 @@
+.yellow-text {
+  color: hsla(49, 100%, 50%, 1);
+}
+
+.yellow-bg {
+  background: hsla(49, 100%, 50%, 1);
+}
+
+.blue-text {
+  color: hsla(210, 100%, 56%, 1);
+}
+
+.blue-bg {
+  background: hsla(210, 100%, 56%, 1);
+}
+
+.marine-text {
+  color: hsla(220, 100%, 50%, 1);
+}
+
+.marine-bg {
+  background: hsla(220, 100%, 50%, 1);
+}
+
+.dark-text {
+  color: hsla(232, 54%, 11%, 1);
+}
+
+.dark-bg {
+  background: hsla(232, 54%, 11%, 1);
+}
+
+.silver-text {
+  color: hsla(240, 3%, 87%, 1);
+}
+
+.silver-bg {
+  background: hsla(240, 3%, 87%, 1);
+}
+
+.white-text {
+  color: hsla(0, 0%, 100%, 1);
+}
+
+.transparent-text {
+  color: transparent;
+}
+
+.transparent-bg {
+  background: transparent;
+}
+
+.white-bg {
+  background: hsla(0, 0%, 100%, 1);
+}
+
+.green-text {
+  color: hsla(163, 91%, 63%, 1);
+}
+
+.green-bg {
+  background: hsla(163, 91%, 63%, 1);
+}
+
+.crimson-text {
+  color: hsla(340, 90%, 51%, 1);
+}
+
+.crimson-bg {
+  background: hsla(340, 90%, 51%, 1);
+}
+
+.offline-bg {
+  background: hsla(340, 90%, 51%, .7);
+}

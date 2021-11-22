@@ -1,0 +1,987 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/trivium_web/live/frame_live/new.html.leex:34
+#: lib/trivium_web/live/frame_live/new.html.leex:34
+msgid "Copy Paste o iframe que você deseja adicionar e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/new.html.leex:34
+#: lib/trivium_web/live/classroom_live/new.html.leex:34
+msgid "Digite o nome da sala de aula que você deseja adicionar e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/new.html.leex:34
+#: lib/trivium_web/live/content_live/new.html.leex:34
+msgid "Digite o nome do conteudo que você deseja adicionar e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/edit.html.leex:34
+#: lib/trivium_web/live/content_live/edit.html.leex:34
+msgid "Edite o conteudo e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/edit.html.leex:34
+#: lib/trivium_web/live/question_live/edit.html.leex:34 lib/trivium_web/live/question_live/new.html.leex:34
+#: lib/trivium_web/live/question_live/new.html.leex:34
+msgid "Faça uma pergunta e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/quiz_live/edit.html.leex:34
+#: lib/trivium_web/live/quiz_live/edit.html.leex:34 lib/trivium_web/live/quiz_live/new.html.leex:34
+#: lib/trivium_web/live/quiz_live/new.html.leex:34
+msgid "Faça uma pergunta, quiz e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/edit.html.leex:34
+#: lib/trivium_web/live/classroom_live/edit.html.leex:34 lib/trivium_web/live/concept_live/edit.html.leex:34
+#: lib/trivium_web/live/concept_live/edit.html.leex:34 lib/trivium_web/live/institution_live/edit.html.leex:34
+#: lib/trivium_web/live/institution_live/edit.html.leex:34 lib/trivium_web/live/lesson_live/edit.html.leex:34
+#: lib/trivium_web/live/lesson_live/edit.html.leex:34
+msgid "Modifique e depois clique em salvar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/lesson_live/new.html.leex:34
+#: lib/trivium_web/live/lesson_live/new.html.leex:34
+msgid "Type the name of the lesson and click on save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/youtube_live/new.html.leex:34
+#: lib/trivium_web/live/youtube_live/new.html.leex:34
+msgid "Copie e cole um link do youtube e pressione salvar, você também pode adicionar uma legenda"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/frame_live/edit.html.leex:34
+#: lib/trivium_web/live/frame_live/edit.html.leex:34 lib/trivium_web/live/youtube_live/edit.html.leex:34
+#: lib/trivium_web/live/youtube_live/edit.html.leex:34
+msgid "Edite os campos e pressione atualizar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:5
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:5 lib/trivium_web/live/activities_live/handle_form_component.html.leex:5
+#: lib/trivium_web/live/activities_live/handle_form_component.html.leex:5
+msgid "Hello"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/page_live.html.leex:7
+#: lib/trivium_web/live/page_live.html.leex:7
+msgid "activities"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/edit.html.leex:16
+#: lib/trivium_web/live/question_live/edit.html.leex:16 lib/trivium_web/live/question_live/edit.html.leex:21
+#: lib/trivium_web/live/question_live/edit.html.leex:21
+msgid "editar pergunta"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/frame_live/edit.html.leex:16
+#: lib/trivium_web/live/frame_live/edit.html.leex:16 lib/trivium_web/live/frame_live/edit.html.leex:21
+#: lib/trivium_web/live/frame_live/edit.html.leex:21 lib/trivium_web/live/youtube_live/edit.html.leex:16
+#: lib/trivium_web/live/youtube_live/edit.html.leex:16 lib/trivium_web/live/youtube_live/edit.html.leex:21
+#: lib/trivium_web/live/youtube_live/edit.html.leex:21
+msgid "editar youtube video"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/handle_form_component.html.leex:6
+#: lib/trivium_web/live/activities_live/handle_form_component.html.leex:6
+msgid "let's configure your account"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/new.html.leex:16
+#: lib/trivium_web/live/question_live/new.html.leex:16 lib/trivium_web/live/question_live/new.html.leex:21
+#: lib/trivium_web/live/question_live/new.html.leex:21
+msgid "nova pergunta"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/frame_live/new.html.leex:16
+#: lib/trivium_web/live/frame_live/new.html.leex:16 lib/trivium_web/live/frame_live/new.html.leex:21
+#: lib/trivium_web/live/frame_live/new.html.leex:21
+msgid "novo iframe"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:41
+#: lib/trivium_web/live/classroom_live/show.html.leex:41 lib/trivium_web/live/institution_live/index.html.leex:44
+#: lib/trivium_web/live/institution_live/index.html.leex:44 lib/trivium_web/live/institution_live/show.html.leex:41
+#: lib/trivium_web/live/institution_live/show.html.leex:41 lib/trivium_web/live/menu_live/menu_component.html.leex:59
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:59 lib/trivium_web/live/page_live.html.leex:43
+#: lib/trivium_web/live/page_live.html.leex:43 lib/trivium_web/live/page_live.html.leex:95
+#: lib/trivium_web/live/page_live.html.leex:95 lib/trivium_web/live/profile_live/show.html.leex:48
+#: lib/trivium_web/live/profile_live/show.html.leex:48 lib/trivium_web/live/subject_live/show.html.leex:41
+#: lib/trivium_web/live/subject_live/show.html.leex:41 lib/trivium_web/live/teaser_live/teaser_live.html.leex:15
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:15 lib/trivium_web/templates/user_settings/edit.html.eex:20
+#: lib/trivium_web/templates/user_settings/edit.html.eex:20
+msgid "exit"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:69
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:69 lib/trivium_web/live/landing_live/landing_component.html.leex:86
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:86
+msgid "Do you already have an account with us?"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:68
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:68 lib/trivium_web/live/landing_live/landing_component.html.leex:85
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:85
+msgid "Welcome"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:75
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:75 lib/trivium_web/live/landing_live/landing_component.html.leex:91
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:91
+msgid "no"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:74
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:74 lib/trivium_web/live/landing_live/landing_component.html.leex:90
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:90
+msgid "yes"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:47
+#: lib/trivium_web/templates/user_registration/new.html.eex:47
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:58
+#: lib/trivium_web/templates/user_registration/new.html.eex:58
+msgid "full name"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:86
+#: lib/trivium_web/templates/user_registration/new.html.eex:86 lib/trivium_web/templates/user_reset_password/edit.html.eex:57
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:57 lib/trivium_web/templates/user_session/new.html.eex:67
+#: lib/trivium_web/templates/user_session/new.html.eex:67
+msgid "password"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:18
+#: lib/trivium_web/templates/user_registration/new.html.eex:18 lib/trivium_web/templates/user_registration/new.html.eex:23
+#: lib/trivium_web/templates/user_registration/new.html.eex:23 lib/trivium_web/templates/user_registration/new.html.eex:108
+#: lib/trivium_web/templates/user_registration/new.html.eex:108
+msgid "register"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:15
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:15 lib/trivium_web/live/landing_live/landing_component.html.leex:97
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:97
+msgid "Choose a language"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:60
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:60 lib/trivium_web/live/landing_live/landing_component.html.leex:140
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:140
+msgid "Contact us"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/internet_image_live/new.html.leex:34
+#: lib/trivium_web/live/internet_image_live/new.html.leex:34
+msgid "Copie e cole o link da imagem e pressione salvar, você também pode adicionar uma legenda"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:51
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:51 lib/trivium_web/live/landing_live/landing_component.html.leex:131
+#: lib/trivium_web/live/landing_live/landing_component.html.leex:131
+msgid "Learn more"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:46
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:46
+msgid "Oops, something went wrong! Please check the errors below"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/page_live.html.leex:108
+#: lib/trivium_web/live/page_live.html.leex:108
+msgid "Please choose a language"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:327
+#: lib/trivium_web/live/content_live/show.html.leex:327 lib/trivium_web/live/internet_image_live/new.html.leex:16
+#: lib/trivium_web/live/internet_image_live/new.html.leex:16 lib/trivium_web/live/internet_image_live/new.html.leex:21
+#: lib/trivium_web/live/internet_image_live/new.html.leex:21
+msgid "image"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/profile_live/show.html.leex:12
+#: lib/trivium_web/live/profile_live/show.html.leex:12 lib/trivium_web/templates/user_settings/edit.html.eex:12
+#: lib/trivium_web/templates/user_settings/edit.html.eex:12
+msgid "profile"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/handle_form_component.html.leex:16
+#: lib/trivium_web/live/activities_live/handle_form_component.html.leex:16 lib/trivium_web/live/subscription_live/new.html.leex:50
+#: lib/trivium_web/live/subscription_live/new.html.leex:50
+msgid "Type your code"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:83
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:83
+msgid "Actividades del alumno"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:44
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:44
+msgid "Admite todos los tamaños de pantalla"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:105
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:105
+msgid "All"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:153
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:153
+msgid "Audio"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:241
+#: lib/trivium_web/live/question_live/qa_component.html.leex:241 lib/trivium_web/live/quiz_live/quiz_component.html.leex:321
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:321
+msgid "Awaiting evaluation"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:23
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:23
+msgid "Awaiting your teacher to accept your request"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:111
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:111
+msgid "Comunicación clara con el Usuario"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:35
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:35
+msgid "Docencia práctica,"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_session/new.html.eex:82
+#: lib/trivium_web/templates/user_session/new.html.eex:82
+msgid "Don't have an account? Register"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:181
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:181
+msgid "Editor de Código Fuente"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:45
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:45
+msgid "Ex. Computadores, Laptops, tablets y celulares."
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:202
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:202
+msgid "Flashcards"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_session/new.html.eex:83
+#: lib/trivium_web/templates/user_session/new.html.eex:83
+msgid "Forgot your password?"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:69
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:69
+msgid "Fácil de Registrarse"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:209
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:209
+msgid "Fácil de evaluar a los alumnos"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:146
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:146
+msgid "Imagenes"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:90
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:90
+msgid "Interfaz Amigable"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:62
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:62
+msgid "Interfaz Conversacional "
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:104
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:104
+msgid "Menú Práctico e Intuitivo"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:139
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:139
+msgid "Multimedia"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:61
+#: lib/trivium_web/live/question_live/qa_component.html.leex:61
+msgid "No students responded yet"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:118
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:118 lib/trivium_web/live/teaser_live/teaser_live.html.leex:125
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:125 lib/trivium_web/live/teaser_live/teaser_live.html.leex:132
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:132
+msgid "Panel del Profesor"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:174
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:174
+msgid "Paso a Paso"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:215
+#: lib/trivium_web/live/content_live/show.html.leex:215
+msgid "Paste the url and then click on the checkmark"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:97
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:97
+msgid "Perfil"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:195
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:195
+msgid "Preguntas y Respuestas "
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:188
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:188
+msgid "Seleccion Multiple"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/show.html.leex:68
+#: lib/trivium_web/live/institution_live/show.html.leex:68
+msgid "Select a classroom"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/show.html.leex:80
+#: lib/trivium_web/live/subject_live/show.html.leex:80
+msgid "Select a concept"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/index.html.leex:63
+#: lib/trivium_web/live/institution_live/index.html.leex:63
+msgid "Select an institution"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:76
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:76
+msgid "Sencillo de Configurar"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:55
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:55
+msgid "Soporte Multi Lenguaje"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/quiz_live/quiz_component.ex:75
+#: lib/trivium_web/live/quiz_live/quiz_component.ex:75
+msgid "Type an answer"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subscription_live/new.html.leex:35
+#: lib/trivium_web/live/subscription_live/new.html.leex:35
+msgid "Type the new classroom code and then click apply"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:272
+#: lib/trivium_web/live/question_live/qa_component.html.leex:272
+msgid "Type your answer"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.ex:630
+#: lib/trivium_web/live/content_live/show.ex:630 lib/trivium_web/live/content_live/show.ex:649
+#: lib/trivium_web/live/content_live/show.ex:649
+msgid "Type your question here"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:160
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:160
+msgid "Videos"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.ex:562
+#: lib/trivium_web/live/content_live/show.ex:562
+msgid "Well Done!"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:154
+#: lib/trivium_web/live/question_live/qa_component.html.leex:154 lib/trivium_web/live/question_live/qa_component.html.leex:225
+#: lib/trivium_web/live/question_live/qa_component.html.leex:225 lib/trivium_web/live/question_live/qa_component.html.leex:295
+#: lib/trivium_web/live/question_live/qa_component.html.leex:295 lib/trivium_web/live/quiz_live/quiz_component.html.leex:234
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:234 lib/trivium_web/live/quiz_live/quiz_component.html.leex:305
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:305 lib/trivium_web/live/quiz_live/quiz_component.html.leex:371
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:371
+msgid "Worth"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:68
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:68
+msgid "add a new quiz"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/show.html.leex:100
+#: lib/trivium_web/live/subject_live/show.html.leex:100
+msgid "add concept"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:88
+#: lib/trivium_web/live/classroom_live/show.html.leex:88
+msgid "add handle"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:322
+#: lib/trivium_web/live/content_live/show.html.leex:322
+msgid "add new"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:81
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:81
+msgid "analitycs"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:36
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:36 lib/trivium_web/live/content_live/show.html.leex:238
+#: lib/trivium_web/live/content_live/show.html.leex:238 lib/trivium_web/live/image_live/image_component.html.leex:36
+#: lib/trivium_web/live/image_live/image_component.html.leex:36 lib/trivium_web/live/video_live/video_component.html.leex:34
+#: lib/trivium_web/live/video_live/video_component.html.leex:34
+msgid "cancel"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:6
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:6
+msgid "choose an option"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:83
+#: lib/trivium_web/live/classroom_live/show.html.leex:83
+msgid "code"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:295
+#: lib/trivium_web/live/content_live/show.html.leex:295
+msgid "completed!"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:50
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:50
+msgid "contact us"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:285
+#: lib/trivium_web/live/content_live/show.html.leex:285
+msgid "continue"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:123
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:123
+msgid "correct answer"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:148
+#: lib/trivium_web/live/classroom_live/show.html.leex:148 lib/trivium_web/live/institution_live/index.html.leex:84
+#: lib/trivium_web/live/institution_live/index.html.leex:84 lib/trivium_web/live/institution_live/show.html.leex:93
+#: lib/trivium_web/live/institution_live/show.html.leex:93 lib/trivium_web/live/subject_live/show.html.leex:102
+#: lib/trivium_web/live/subject_live/show.html.leex:102 lib/trivium_web/live/subject_live/show.html.leex:126
+#: lib/trivium_web/live/subject_live/show.html.leex:126
+msgid "delete"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:86
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:86
+msgid "done"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:147
+#: lib/trivium_web/live/classroom_live/show.html.leex:147 lib/trivium_web/live/institution_live/index.html.leex:83
+#: lib/trivium_web/live/institution_live/index.html.leex:83 lib/trivium_web/live/institution_live/show.html.leex:92
+#: lib/trivium_web/live/institution_live/show.html.leex:92 lib/trivium_web/live/subject_live/show.html.leex:101
+#: lib/trivium_web/live/subject_live/show.html.leex:101 lib/trivium_web/live/subject_live/show.html.leex:125
+#: lib/trivium_web/live/subject_live/show.html.leex:125
+msgid "edit"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/edit.html.leex:16
+#: lib/trivium_web/live/subject_live/edit.html.leex:16 lib/trivium_web/live/subject_live/edit.html.leex:21
+#: lib/trivium_web/live/subject_live/edit.html.leex:21
+msgid "edit subject"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/profile_live/show.html.leex:84
+#: lib/trivium_web/live/profile_live/show.html.leex:84
+msgid "email"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_session/new.html.eex:77
+#: lib/trivium_web/templates/user_session/new.html.eex:77
+msgid "enter"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:187
+#: lib/trivium_web/live/classroom_live/show.html.leex:187
+msgid "excluir"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:167
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:167
+msgid "iFrames"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:326
+#: lib/trivium_web/live/content_live/show.html.leex:326
+msgid "image url"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:22
+#: lib/trivium_web/live/activities_live/dash_component.html.leex:22 lib/trivium_web/live/institution_live/index.html.leex:8
+#: lib/trivium_web/live/institution_live/index.html.leex:8
+msgid "institutions"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:115
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:115
+msgid "is this correct?"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/profile_live/show.html.leex:89
+#: lib/trivium_web/live/profile_live/show.html.leex:89
+msgid "language"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_session/new.html.eex:16
+#: lib/trivium_web/templates/user_session/new.html.eex:16 lib/trivium_web/templates/user_session/new.html.eex:22
+#: lib/trivium_web/templates/user_session/new.html.eex:22
+msgid "login"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:305
+#: lib/trivium_web/live/content_live/show.html.leex:305
+msgid "mark as done"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:87
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:87
+msgid "messages"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/concept_live/new.html.leex:54
+#: lib/trivium_web/live/concept_live/new.html.leex:54 lib/trivium_web/live/profile_live/show.html.leex:79
+#: lib/trivium_web/live/profile_live/show.html.leex:79 lib/trivium_web/live/subject_live/new.html.leex:54
+#: lib/trivium_web/live/subject_live/new.html.leex:54
+msgid "name"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:99
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:99
+msgid "new classroom"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subscription_live/new.html.leex:17
+#: lib/trivium_web/live/subscription_live/new.html.leex:17 lib/trivium_web/live/subscription_live/new.html.leex:22
+#: lib/trivium_web/live/subscription_live/new.html.leex:22
+msgid "new classroom code"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/concept_live/new.html.leex:16
+#: lib/trivium_web/live/concept_live/new.html.leex:16 lib/trivium_web/live/concept_live/new.html.leex:21
+#: lib/trivium_web/live/concept_live/new.html.leex:21
+msgid "new concept"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:90
+#: lib/trivium_web/live/classroom_live/show.html.leex:90
+msgid "no code yet"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:93
+#: lib/trivium_web/live/menu_live/menu_component.html.leex:93
+msgid "notifications"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:127
+#: lib/trivium_web/live/question_live/qa_component.html.leex:127 lib/trivium_web/live/question_live/qa_component.html.leex:166
+#: lib/trivium_web/live/question_live/qa_component.html.leex:166 lib/trivium_web/live/question_live/qa_component.html.leex:237
+#: lib/trivium_web/live/question_live/qa_component.html.leex:237 lib/trivium_web/live/question_live/qa_component.html.leex:243
+#: lib/trivium_web/live/question_live/qa_component.html.leex:243 lib/trivium_web/live/question_live/qa_component.html.leex:307
+#: lib/trivium_web/live/question_live/qa_component.html.leex:307 lib/trivium_web/live/quiz_live/quiz_component.html.leex:207
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:207 lib/trivium_web/live/quiz_live/quiz_component.html.leex:246
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:246 lib/trivium_web/live/quiz_live/quiz_component.html.leex:317
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:317 lib/trivium_web/live/quiz_live/quiz_component.html.leex:323
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:323 lib/trivium_web/live/quiz_live/quiz_component.html.leex:383
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:383
+msgid "points"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:333
+#: lib/trivium_web/live/content_live/show.html.leex:333
+msgid "question"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:334
+#: lib/trivium_web/live/content_live/show.html.leex:334
+msgid "quiz"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:122
+#: lib/trivium_web/live/classroom_live/show.html.leex:122
+msgid "request"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/question_live/qa_component.html.leex:102
+#: lib/trivium_web/live/question_live/qa_component.html.leex:102 lib/trivium_web/live/quiz_live/quiz_component.html.leex:106
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:106 lib/trivium_web/live/quiz_live/quiz_component.html.leex:182
+#: lib/trivium_web/live/quiz_live/quiz_component.html.leex:182
+msgid "reset"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:36
+#: lib/trivium_web/live/teaser_live/teaser_live.html.leex:36
+msgid "rápida y fácil."
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:56
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:56 lib/trivium_web/live/image_live/image_component.html.leex:51
+#: lib/trivium_web/live/image_live/image_component.html.leex:51 lib/trivium_web/live/profile_live/avatar_component.html.leex:69
+#: lib/trivium_web/live/profile_live/avatar_component.html.leex:69 lib/trivium_web/live/subject_live/edit.html.leex:69
+#: lib/trivium_web/live/subject_live/edit.html.leex:69 lib/trivium_web/live/subject_live/new.html.leex:71
+#: lib/trivium_web/live/subject_live/new.html.leex:71 lib/trivium_web/live/video_live/video_component.html.leex:54
+#: lib/trivium_web/live/video_live/video_component.html.leex:54
+msgid "save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:56
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:56 lib/trivium_web/live/image_live/image_component.html.leex:51
+#: lib/trivium_web/live/image_live/image_component.html.leex:51 lib/trivium_web/live/profile_live/avatar_component.html.leex:69
+#: lib/trivium_web/live/profile_live/avatar_component.html.leex:69 lib/trivium_web/live/video_live/video_component.html.leex:54
+#: lib/trivium_web/live/video_live/video_component.html.leex:54
+msgid "saving"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/image_live/image_component.html.leex:30
+#: lib/trivium_web/live/image_live/image_component.html.leex:30
+msgid "select an image"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:114
+#: lib/trivium_web/live/classroom_live/show.html.leex:114
+msgid "students"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:106
+#: lib/trivium_web/live/classroom_live/show.html.leex:106
+msgid "subjects"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:76
+#: lib/trivium_web/live/activities_live/subscribed_customer_component.html.leex:76
+msgid "tasks"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/classroom_live/show.html.leex:185
+#: lib/trivium_web/live/classroom_live/show.html.leex:185
+msgid "teacher"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:324
+#: lib/trivium_web/live/content_live/show.html.leex:324
+msgid "text"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:227
+#: lib/trivium_web/live/content_live/show.html.leex:227
+msgid "url"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:325
+#: lib/trivium_web/live/content_live/show.html.leex:325
+msgid "youtube"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:36
+#: lib/trivium_web/templates/user_registration/new.html.eex:36
+msgid "Enter your full name, email, password and then press register"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_session/new.html.eex:36
+#: lib/trivium_web/templates/user_session/new.html.eex:36
+msgid "Enter your email, password and then press enter"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:113
+#: lib/trivium_web/templates/user_registration/new.html.eex:113
+msgid "Already have an account? Login"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/new.html.eex:36
+#: lib/trivium_web/templates/user_reset_password/new.html.eex:36
+msgid "Enter your e-mail and then press reset password"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:36
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:36
+msgid "Enter your new password, enter again below and then press confirm"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:82
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:82
+msgid "confirm"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:71
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:71
+msgid "confirm password"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/new.html.eex:16
+#: lib/trivium_web/templates/user_reset_password/new.html.eex:16 lib/trivium_web/templates/user_reset_password/new.html.eex:22
+#: lib/trivium_web/templates/user_reset_password/new.html.eex:22
+msgid "forgot your password?"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:16
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:16 lib/trivium_web/templates/user_reset_password/edit.html.eex:22
+#: lib/trivium_web/templates/user_reset_password/edit.html.eex:22
+msgid "reset password"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/edit.html.leex:34
+#: lib/trivium_web/live/subject_live/edit.html.leex:34
+msgid "Edit the name of the subject and then press save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/new.html.leex:34
+#: lib/trivium_web/live/subject_live/new.html.leex:34
+msgid "Enter the name of the subject and then click save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/subject_live/new.html.leex:16
+#: lib/trivium_web/live/subject_live/new.html.leex:16 lib/trivium_web/live/subject_live/new.html.leex:21
+#: lib/trivium_web/live/subject_live/new.html.leex:21
+msgid "new subject"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/concept_live/new.html.leex:34
+#: lib/trivium_web/live/concept_live/new.html.leex:34
+msgid "Enter the name of the concept and then press save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/new.html.leex:34
+#: lib/trivium_web/live/institution_live/new.html.leex:34
+msgid "Enter the name of the institution and then press save"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/image_live/image_component.ex:54
+#: lib/trivium_web/live/image_live/image_component.ex:54
+msgid "Image successfully uploaded!"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/new.html.leex:54
+#: lib/trivium_web/live/institution_live/new.html.leex:54
+msgid "institution name"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/new.html.leex:68
+#: lib/trivium_web/live/institution_live/new.html.leex:68
+msgid "locality"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/institution_live/new.html.leex:16
+#: lib/trivium_web/live/institution_live/new.html.leex:16 lib/trivium_web/live/institution_live/new.html.leex:21
+#: lib/trivium_web/live/institution_live/new.html.leex:21
+msgid "new institution"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:328
+#: lib/trivium_web/live/content_live/show.html.leex:328
+msgid "video"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/audio_live/audio_component.ex:59
+#: lib/trivium_web/live/audio_live/audio_component.ex:59
+msgid "Audio successfully uploaded!"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/templates/user_registration/new.html.eex:90
+#: lib/trivium_web/templates/user_registration/new.html.eex:90
+msgid "The password must be at least 8 characters long."
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/video_live/video_component.ex:59
+#: lib/trivium_web/live/video_live/video_component.ex:59
+msgid "Video successfully uploaded!"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/content_live/show.html.leex:329
+#: lib/trivium_web/live/content_live/show.html.leex:329
+msgid "audio"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:30
+#: lib/trivium_web/live/audio_live/audio_component.html.leex:30
+msgid "select a audio file"
+msgstr ""
+
+#, elixir-format
+#: lib/trivium_web/live/video_live/video_component.html.leex:28
+#: lib/trivium_web/live/video_live/video_component.html.leex:28
+msgid "select a video file"
+msgstr ""

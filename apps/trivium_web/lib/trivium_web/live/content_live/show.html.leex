@@ -1,0 +1,557 @@
+<%# ###########################
+    TEACHER
+  ############################# %>
+<%= if @current_user_policy == "teacher" || @current_user.role == "root" do %>
+  <nav class="scrollnav">
+    <div class="scrollnav__left">
+      <%= live_redirect to: Routes.subject_show_path(@socket, :show, @concept.lesson.subject.id), class: "scrollnav__icon-link" do %>
+        <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+      <% end %>
+    </div> <%# >>>>>>>>> scrollnav__left %>
+    <div class="scrollnav__right">
+      <ul class="scrollnav__ul">
+        <%= for content <- @contents do %>
+          <li class="scrollnav__li">
+            <%= link content.name, to: Routes.content_show_path(@socket,
+                                   :show, @concept_id, content.id),
+                                   id: (if content.id == @content.id, do: "scrollnav__active", else: content.id),
+                                   class: (if content.id == @content.id, do: "scrollnav__active", else: "scrollnav__inactive") %>
+          </li>
+        <% end %>
+      </ul>
+    </div> <%# >>>>>>>>> scrollnav__left %>
+  </nav> <%# >>>>>>>>> scrollnav %>
+
+  <div class="spacer-32"></div>
+
+  <div id="content-<%= @content.id %>" class="content">
+    <%# ###########################
+      HEAD 1
+    ############################# %>
+
+    <div class="content-head-1">
+      <p class="content-head-1__concept"><%= @content.concept.name %><span class="content-head-1__dot">.</span></p>
+      <%= if @edit_mode == "editable" do %>
+        <div class="content-head-1__edit">
+          <input id="content-position"
+                 class="content-head-1__input"
+                 type="number"
+                 name="position-input"
+                 value="<%= position_to_string(@content.position) %>"
+                 data-content-id="<%= @content.id %>"
+                 phx-hook="Position" min="1" required>
+        </div> <%# >>>>>>> content-head-1__edit %>
+      <% else %>
+        <h5 class="content-head-1__position"><%= position_to_string(@content.position) %></h5>
+      <% end %>
+    </div> <%# >>>>>>> content-head-1 %>
+
+    <div class="spacer-64"></div>
+
+    <%# ###########################
+      HEAD 2
+    ############################# %>
+
+    <div class="content-head-2">
+      <%= if @edit_mode == "editable" do %>
+        <%= if this_collection(@concept.contents) > 1 do %>
+          <%= link to: "#", phx_click: "delete-content", phx_value_id: @content.id, data: [confirm: "Are you sure?"], class: "content-head-2__link" do %>
+            <%= TriviumWeb.SvgView.render("_bin.html") %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <span></span>
+      <% end %>
+      <h2 id="content-name"
+          class="content-head-2__name"
+          phx-hook="Name"
+          data-selected-id="<%= @content.id %>"
+          contenteditable="<%= @contenteditable %>">
+            <%= @content.name %>
+      </h2> <%# maxlength="255" %>
+      <div class="content-head-2__forward">
+        <%= if @edit_mode == "presentation" do %>
+          <a href="#">
+            <%= TriviumWeb.SvgView.render("_forward.html") %>
+          </a>
+        <% end %>
+      </div>
+    </div> <%# >>>>>>> content-head-2 %>
+
+    <div class="spacer-32"></div>
+
+    <%# ###########################
+      MEDIAS
+    ############################# %>
+
+      <%= for media <- list_media(@content) do %>
+
+        <%# ###########################
+          WRITING
+        ############################# %>
+        <%= if media.type == "writing" do %>
+          <%= live_component @socket, TriviumWeb.WritingShowComponent,
+                            id: "writing-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END WRITING %>
+
+        <%# ###########################
+          YOUTUBE
+        ############################# %>
+        <%= if media.type == "youtube" do %>
+          <%= live_component @socket, TriviumWeb.YoutubeShowComponent,
+                            id: "youtube-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END YOUTUBE %>
+
+        <%# ###########################
+          INTERNET-IMAGE
+        ############################# %>
+        <%= if media.type == "internet-image" do %>
+          <%= live_component @socket, TriviumWeb.InternetImageShowComponent,
+                            id: "internet-image-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END INTERNET-IMAGE %>
+
+        <%# ###########################
+          IMAGE
+        ############################# %>
+        <%= if media.type == "image" do %>
+          <%= live_component @socket, TriviumWeb.ImageShowComponent,
+                            id: "image-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END IMAGE %>
+
+        <%# ###########################
+          VIDEO
+        ############################# %>
+        <%= if media.type == "video" do %>
+          <%= live_component @socket, TriviumWeb.VideoShowComponent,
+                            id: "video-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END VIDEO %>
+
+        <%# ###########################
+          AUDIO
+        ############################# %>
+        <%= if media.type == "audio" do %>
+          <%= live_component @socket, TriviumWeb.AudioShowComponent,
+                            id: "audio-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END AUDIO %>
+
+        <%# ###########################
+          FRAME
+        ############################# %>
+        <%= if media.type == "frame" do %>
+          <%= live_component @socket, TriviumWeb.FrameShowComponent,
+                            id: "frame-show-#{media.id}",
+                            media: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END FRAME %>
+
+        <%# ###########################
+          QA
+        ############################# %>
+        <%= if media.type == "question" do %>
+          <%= live_component @socket, TriviumWeb.QaComponent,
+                            id: "qa-#{media.id}",
+                            content: @content,
+                            question: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END QA %>
+
+        <%# ###########################
+          QUIZ
+        ############################# %>
+        <%= if media.type == "quizzes" do %>
+          <%= live_component @socket, TriviumWeb.QuizComponent,
+                            id: "quiz-#{media.id}",
+                            content: @content,
+                            question: media,
+                            edit_mode: @edit_mode,
+                            contenteditable: @contenteditable %>
+        <% end %> <%# END QA %>
+
+      <% end %> <%# >>>>>>> for media <- list_media(@content) do %>
+
+      <%# ###########################
+        LINER-FORM
+      ############################# %>
+
+
+
+        <%= if @urlform == "block" do %>
+          <div class="content__standard-width">
+            <div class="agent-wrapper">
+              <div class="agent-no-margin">
+                <div class="agent__container">
+                  <p class="agent__message">
+                    <%= gettext "Paste the url and then click on the checkmark" %>
+                  </p> <%# agent__message %>
+                </div> <%# agent__container %>
+              </div> <%# agent %>
+            </div> <%# agent-wrapper %>
+            <div class="spacer-20"></div>
+            <form class="liner-form" phx-submit="new-<%= @media_type %>">
+              <div class="liner-form__container">
+                <label for="url" class="liner-form__label">
+                  <figure class="liner-form__figure">
+                    <%= TriviumWeb.SvgView.render("_url.html") %>
+                  </figure>
+                  <input id="url" class="liner-form__input" type="text" name="url" placeholder="<%= gettext "url" %>" autocomplete="off">
+                </label>
+                <div class="liner-form__btn">
+                  <span class="liner-form__shadow"></span>
+                  <button class="liner-form__submit" type="submit" name="button">
+                    <%= TriviumWeb.SvgView.render("_checkmark-blue.html") %>
+                  </button>
+                </div> <%# liner-form__btn %>
+              </div> <%# >>>>>> liner-form__container %>
+            </form>
+            <div class="spacer-24"></div>
+            <a href="#" class="liner-form__link" phx-click="cancel-formatic"><%= gettext "cancel" %></a>
+          </div> <%# >>>>>>> content__standard-width %>
+        <% end %>
+
+        <%= if @uploadform == "block" do %>
+          <%= live_component @socket, TriviumWeb.ImageComponent,
+                            id: "new-image-#{@content.id}",
+                            content: @content,
+                            uploadform: @uploadform %>
+        <% end %>
+
+        <%= if @videoform == "block" do %>
+          <%= live_component @socket, TriviumWeb.VideoComponent,
+                            id: "new-video-#{@content.id}",
+                            content: @content,
+                            videoform: @videoform %>
+        <% end %>
+
+        <%= if @audioform == "block" do %>
+          <%= live_component @socket, TriviumWeb.AudioComponent,
+                            id: "new-audio-#{@content.id}",
+                            content: @content,
+                            audioform: @audioform %>
+        <% end %>
+
+        <%= if @frameform == "block" do %>
+          <%= live_component @socket, TriviumWeb.FrameComponent,
+                            id: "new-frame-#{@content.id}",
+                            content: @content,
+                            frameform: @frameform %>
+        <% end %>
+
+
+      <div class="spacer-64"></div>
+
+      <%# ###########################
+      DASH
+      ############################# %>
+
+      <%= if @edit_mode == "editable" do %>
+        <div class="content__media-width">
+          <div class="dash">
+            <div class="dash__container">
+              <p class="dash__dialog"><%= gettext "add new" %></p>
+              <ul class="dash__ul">
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="new-writing" phx-value-content_id="<%= @content.id %>"><%= gettext "text" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="show-urlform" phx-value-media_type="youtube"><%= gettext "youtube" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="show-urlform" phx-value-media_type="internet-image"><%= gettext "image url" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="show-image-form" phx-value-media_type="image"><%= gettext "image" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="show-video-form" phx-value-media_type="video"><%= gettext "video" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="show-audio-form" phx-value-media_type="audio"><%= gettext "audio" %></a></li>
+
+                <!-- <li class="dash__li"><a href="#" class="dash__link" phx-click="show-frame-form" phx-value-media_type="frame"><%# gettext "iframe" %></a></li> -->
+
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="new-qa"><%= gettext "question" %></a></li>
+                <li class="dash__li"><a href="#" class="dash__link" phx-click="new-quiz"><%= gettext "quiz" %></a></li>
+              </ul>
+            </div>
+
+          </div> <%# >>>>>>> dash %>
+        </div> <%# >>>>>>> content__standard-width %>
+      <% end %> <%# >>>>>>> if @edit_mode == "editable" do %>
+
+    <div class="spacer-128"></div>
+  </div> <%# >>>>>>>>> content %>
+
+  <%# ###########################
+  MENU
+  ############################# %>
+
+
+  <div class="menu-editable">
+    <div class="editable">
+      <div class="editable__links">
+        <%= link to: "#", phx_click: "editable-mode", class: "editable__link"  do %>
+          <%= if @edit_mode == "editable" do %>
+            <figure class="editable__active yellow-bg">
+              <%= TriviumWeb.SvgView.render("_edit-mode.html") %>
+            </figure>
+          <% else %>
+            <figure class="editable__inactive">
+              <%= TriviumWeb.SvgView.render("_edit-mode.html") %>
+            </figure>
+          <% end %>
+        <% end %>
+        <%= link to: "#", phx_click: "presentation-mode", class: "editable__link" do %>
+          <%= if @edit_mode == "presentation" do %>
+            <figure class="editable__active dark-bg">
+              <%= TriviumWeb.SvgView.render("_presentation-mode-active.html") %>
+            </figure>
+          <% else %>
+            <figure class="editable__inactive">
+              <%= TriviumWeb.SvgView.render("_presentation-mode.html") %>
+            </figure>
+          <% end %>
+        <% end %>
+      </div> <%# >>>>>>> editable__links %>
+    </div> <%# >>>>>>> editable %>
+  </div>
+
+
+  <a href="#" phx-click="new-content" class="menu-new-content">
+    <%= TriviumWeb.SvgView.render("_plus.html") %>
+  </a> <%# >>>>>>> new-content %>
+
+<% end %>  <%# >>>>>>> if @current_user_policy == "teacher" do %>
+
+
+
+
+<%# ###########################
+  STUDENT
+############################# %>
+<%= if @current_user_policy == "student" do %>
+  <nav class="scrollnav">
+    <div class="scrollnav__left">
+      <a href="/" class="scrollnav__icon-link">
+        <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+      </a>
+    </div> <%# >>>>>>>>> scrollnav__left %>
+    <div class="scrollnav__right">
+      <ul class="scrollnav__ul">
+        <%= for content <- @contents do %>
+          <li class="scrollnav__li">
+            <%= link content.name, to: Routes.content_show_path(@socket,
+                                   :show, @concept_id, content.id),
+                                   id: (if content.id == @content.id, do: "scrollnav__active", else: content.id),
+                                   class: (if content.id == @content.id, do: "scrollnav__active", else: "scrollnav__inactive") %>
+          </li>
+        <% end %>
+      </ul>
+    </div> <%# >>>>>>>>> scrollnav__left %>
+  </nav> <%# >>>>>>>>> scrollnav %>
+
+  <div class="spacer-32"></div>
+
+  <div id="content-<%= @content.id %>" class="content">
+    <%# ###########################
+      HEAD 1
+    ############################# %>
+
+    <div class="content-head-1">
+      <p class="content-head-1__concept"><%= @content.concept.name %><span class="content-head-1__dot">.</span></p>
+      <h5 class="content-head-1__position"><%= position_to_string(@content.position) %></h5>
+    </div> <%# >>>>>>> content-head-1 %>
+
+    <div class="spacer-64"></div>
+
+    <%# ###########################
+      HEAD 2
+    ############################# %>
+
+    <div class="content-head-2">
+      <span></span>
+      <h2 id="content-name" class="content-head-2__name"><%= @content.name %></h2>
+      <div class="content-head-2__forward">
+        <a href="#">
+          <%= TriviumWeb.SvgView.render("_forward.html") %>
+        </a>
+      </div>
+    </div> <%# >>>>>>> content-head-2 %>
+
+    <div class="spacer-32"></div>
+
+    <%# ###########################
+      MEDIAS
+    ############################# %>
+
+    <%= for media <- list_media(@content) do %>
+
+      <%# ###########################
+        WRITING
+      ############################# %>
+      <%= if media.type == "writing" do %>
+        <div id="writing-<%= media.id %>" class="writing-body content__standard-width">
+          <%= as_html(media.body) %>
+        </div> <%# >>>>>> writing-body %>
+      <% end %> <%# END WRITING %>
+
+      <%# ###########################
+        YOUTUBE
+      ############################# %>
+      <%= if media.type == "youtube" do %>
+        <section class="selected__section-full">
+          <figure class="frame">
+            <div class="frame__container">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= player_id(media.url) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div> <!-- frame__container -->
+            <legend id="youtube-legend" class="frame__legend">
+              <%= media.legend %>
+            </legend>
+          </figure> <!-- frame -->
+        </section>
+      <% end %> <%# END YOUTUBE %>
+
+      <%# ###########################
+        INTERNET-IMAGE
+      ############################# %>
+      <%= if media.type == "internet-image" do %>
+        <section class="content__media-width">
+          <figure class="media">
+            <img class="media__source" src="<%= media.url %>" alt="" loading="lazy">
+            <legend id="internet-image-legend-<%= media.id %>" class="media__legend">
+              <%= media.legend %>
+            </legend>
+          </figure> <%# image %>
+        </section>
+      <% end %> <%# END INTERNET-IMAGE %>
+
+      <%# ###########################
+        IMAGE
+      ############################# %>
+      <%= if media.type == "image" do %>
+        <section class="content__media-width">
+          <figure class="media">
+            <img class="media__source" src="<%= media.url %>" alt="" loading="lazy">
+            <legend id="image-legend-<%= media.id %>" class="media__legend">
+              <%= media.legend %>
+            </legend>
+          </figure>
+        </section>
+      <% end %> <%# END IMAGE %>
+
+      <%# ###########################
+        VIDEO
+      ############################# %>
+      <%= if media.type == "video" do %>
+        <section class="content__media-width">
+          <div class="video-container">
+            <video class="video-player" src="<%= media.url %>" controls loading="lazy"></video>
+          </div>
+          <legend id="video-legend-<%= media.id %>" class="media__legend">
+            <%= media.legend %>
+          </legend>
+        </section>
+      <% end %> <%# END VIDEO %>
+
+      <%# ###########################
+        AUDIO
+      ############################# %>
+      <%= if media.type == "audio" do %>
+        <section class="content__media-width">
+          <audio class="media__audio" src="<%= media.url  %>" controls loading="lazy"></audio>
+          <legend id="audio-legend-<%= media.id %>" class="media__legend">
+            <%= media.legend %>
+          </legend>
+        </section>
+      <% end %> <%# END AUDIO %>
+
+      <%# ###########################
+        QA
+      ############################# %>
+      <%= if media.type == "question" do %>
+        <%= live_component @socket, TriviumWeb.QaStudentComponent,
+                          id: "qa-#{media.id}",
+                          content: @content,
+                          question: media,
+                          current_user: @current_user,
+                          user_answered_this_question: @user_answered_this_question %>
+      <% end %> <%# END QA %>
+
+      <%# ###########################
+        QUIZ
+      ############################# %>
+      <%= if media.type == "quizzes" do %>
+        <%= live_component @socket, TriviumWeb.QuizStudentComponent,
+                          id: "quiz-#{media.id}",
+                          content: @content,
+                          question: media,
+                          current_user: @current_user,
+                          user_answered_this_question: @user_answered_this_question %>
+      <% end %> <%# END QA %>
+
+    <% end %> <%# >>>>>>> for media <- list_media(@content) do %>
+
+    <div class="spacer-64"></div>
+
+    <%# ###########################
+      CONTINUE
+    ############################# %>
+
+    <%= if get_next_id(@concept.contents, @content.id) != nil do %>
+      <div class="next-content">
+        <%= link to: Routes.content_show_path(@socket,
+                              :show,
+                              @concept_id,
+                              get_next_id(@concept.contents, @content.id)),
+                              class: "next-content__link" do %>
+                              <span class="next-content__text"><%= gettext "continue" %></span>
+                              <span class="next-content__border yellow-bg"></span>
+        <% end %>
+      </div> <%# >>>>>> next-content %>
+    <% else %>
+      <%= if @concept.id in user_completed(@current_user) do %>
+        <div class="next-content">
+          <p href="/" class="next-content__link">
+              <span class="next-content__text"><%= gettext "completed!" %></span>
+              <span class="next-content__border blue-bg"></span>
+          </p>
+        </div> <%# >>>>>> next-content %>
+
+        <div class="spacer-24"></div>
+        <div class="incomplete">
+          <a href="#"
+             phx-click="student-incomplete-concept"
+             phx-value-user="<%= @current_user.id %>"
+             phx-value-concept="<%= @concept.id %>"
+             class="incomplete__link">
+             mark as incomplete
+          </a>
+        </div>
+
+      <% else %>
+        <div class="next-content">
+          <a href="#" phx-click="student-completed-concept"
+                      phx-value-user="<%= @current_user.id %>"
+                      phx-value-concept="<%= @concept.id %>"
+                      class="next-content__link">
+                      <span class="next-content__text"><%= gettext "mark as done" %></span>
+                      <span class="next-content__border green-bg"></span>
+          </a>
+        </div> <%# >>>>>> next-content %>
+      <% end %>
+    <% end %> <%# >>>>>>> if get_next_id(@concept.contents, @content.id) != nil do %>
+
+    <div class="spacer-128"></div>
+  </div> <%# >>>>>>>>> content %>
+
+  <%= live_component @socket, TriviumWeb.MenuComponent, current_user: @current_user, link_path: nil %>
+
+<% end %> <%# >>>>>>>>> if @current_user_policy == "student" do %>

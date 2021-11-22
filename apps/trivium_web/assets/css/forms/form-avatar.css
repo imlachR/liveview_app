@@ -1,0 +1,120 @@
+.form-avatar {
+  width: 100%;
+
+  display: grid;
+
+  /*
+
+    FALLBACK
+
+  */
+
+  &__fi {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto;
+
+    display: grid;
+
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__input {
+    position: absolute;
+
+    width: 12rem;
+    height: 12rem;
+
+    background: transparent; 
+    border-radius: 100%;
+
+    color: transparent;
+
+    outline: none;
+    transform: translate(-2rem, -2.3rem);
+  }
+
+  /*
+
+    IMAGE
+
+  */
+
+  &__entry {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__figure {
+    width: 8rem;
+    height: 8rem;
+
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__img {
+    width: 8rem;
+    height: 8rem;
+
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  &__progress {
+    display: none;
+  }
+
+  &__hidden {
+    width: 1px;
+    height: 1px;
+  }
+
+  /*
+
+    SUBMIT
+
+  */
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__submit {
+    border: none;
+    outline: none;
+    background: var(--marine);
+    border-radius: .8rem;
+
+    padding: .4rem 1.6rem;
+
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+  }
+
+  &__score {
+    border: none;
+    outline: none;
+    background: var(--green);
+    border-radius: .8rem;
+
+    padding: .4rem 1.6rem;
+
+    color: var(--dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+  }
+}

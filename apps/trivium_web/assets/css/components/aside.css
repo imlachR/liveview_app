@@ -1,0 +1,14 @@
+.aside {
+  display: none;
+
+  @media (min-width: 1280px) {
+    grid-column: 2 / 3;
+
+    display: grid;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: yellow;
+  }
+}

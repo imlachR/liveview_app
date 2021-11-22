@@ -1,0 +1,118 @@
+<div class="ff">
+  <div class="ff-layer-0 dark-bg">
+    <div class="ff__logo">
+      <%= TriviumWeb.SvgView.render("_logo-vertical-ff.html") %>
+    </div>
+  </div> <!-- ff-layer-0 -->
+
+  <div class="ff-layer-1">
+
+    <nav class="ff-nav">
+      <div class="ff-nav__left">
+        <%= live_redirect to: Routes.concept_show_path(@socket, :show, @youtube.content.concept_id), class: "ff-nav__icon" do %>
+          <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+        <% end %>
+        <p class="ff-nav__title">
+          <%= gettext "editar youtube video" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__left -->
+      <div class="ff-nav__middle">
+        <p class="ff-nav__title-middle">
+          <%= gettext "editar youtube video" %><span class="ff-nav__dot">.</span>
+        </p>
+      </div> <!-- ff-nav__middle -->
+      <div class="ff-nav__right">
+        <a href="/" class="logo__16">
+          <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+        </a>
+      </div> <!-- ff-nav__right -->
+    </nav> <!-- ff-nav -->
+
+    <div class="ff-agent">
+      <div class="ff-agent__container">
+        <p class="ff-agent__message color-dark">
+          <%= gettext "Edite os campos e pressione atualizar" %>
+        </p>
+      </div>
+    </div>
+
+
+    <%= f = form_for @changeset, "#",
+        id: "youtube-form",
+        class: "form",
+        phx_target: "#youtube-form",
+        phx_change: "validate",
+        phx_submit: "save" %>
+
+        <div class="form__container">
+          <div class="form__fields">
+
+            <div class="form__wrapper">
+              <div class="form__field">
+                <%= label f, :url, class: "form__label" do %>
+                  <%= TriviumWeb.SvgView.render("_name.html") %>
+                <% end %>
+                <%= text_input f, :url, required: true, class: "form__input", placeholder: "Link", autofocus: true %>
+              </div> <!-- form__field -->
+              <%= if (error_tag f, :url) != [] do %>
+                <div class="form__input-error">
+                  <p class="color-dark"><%= error_tag f, :url %></p>
+                </div> <!-- form__input-error -->
+              <% end %>
+            </div> <!-- form__wrapper -->
+
+            <div class="form__wrapper">
+              <div class="form__field">
+                <%= label f, :legend, class: "form__label" do %>
+                  <%= TriviumWeb.SvgView.render("_name.html") %>
+                <% end %>
+                <%= text_input f, :legend, required: true, class: "form__input", placeholder: "Legenda" %>
+              </div> <!-- form__field -->
+              <%= if (error_tag f, :legend) != [] do %>
+                <div class="form__input-error">
+                  <p class="color-dark"><%= error_tag f, :legend %></p>
+                </div> <!-- form__input-error -->
+              <% end %>
+            </div> <!-- form__wrapper -->
+
+          </div> <!-- form__fields -->
+        </div> <!-- form__container -->
+
+        <div class="form__actions">
+          <div class="form__btn">
+            <div class="form__btn-shadow"></div>
+            <%= submit "atualizar", phx_disable_with: "ATUALIZANDO", class: "form__btn-submit" %>
+          </div>
+        </div> <!-- form__actions -->
+
+      </form>
+
+
+  </div> <!-- ff-layer-1 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- ff -->

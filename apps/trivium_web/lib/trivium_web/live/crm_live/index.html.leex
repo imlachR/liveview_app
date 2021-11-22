@@ -1,0 +1,21 @@
+<div class="users">
+  <%= for user <- @users do %>
+    <div class="user">
+      <figure class="user__figure">
+        <%= if user.avatar != nil do %>
+          <img class="user__img" src="<%= user.avatar.url %>" alt="">
+        <% else %>
+         <span><%= get_first_letter(user.name) %></span>
+        <% end %>
+      </figure>
+      <p class="user__name"><%= user.name %></p>
+      <p class="user__email"><%= user.email %></p>
+      <p class="user__email"><%= user.id %></p>
+      <%= live_redirect "Show", to: Routes.crm_show_path(@socket, :show, user), class: "user__link" %>
+      <%= live_redirect "Edit", to: Routes.crm_edit_path(@socket, :edit, user), class: "user__link" %>
+      <%= link "Delete", to: "#", phx_click: "delete-user",
+                               phx_value_id: user.id,
+                               data: [confirm: "Are you sure?"], class: "user__link" %>
+    </div>
+  <% end %>
+</div>

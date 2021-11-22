@@ -1,0 +1,76 @@
+<div class="about">
+  <div class="about-layer-0"></div>
+  <div class="about-layer-1">
+
+    <nav class="nav dark-bg">
+      <div class="nav__container">
+        <div class="nav__left">
+          <p class="nav__title">
+            <%= gettext "learn more" %><span class="nav__dot">.</span>
+          </p> <%# >>>>>>>>> nav__title %>
+        </div> <%# >>>>>>>>> nav__left %>
+        <div class="nav__right">
+          <a href="/" class="logo__16">
+            <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+          </a>
+          <ul class="nav__ul"></ul> <%# >>>>>>>>> nav__right--links %>
+        </div> <%# >>>>>>>>> nav__right %>
+      </div> <%# >>>>>>>>> nav__container %>
+    </nav> <%# >>>>>>>>> nav %>
+
+    <div class="about-body">
+      <div class="spacer-64"></div>
+
+      <div class="about-body__text">
+        <p class="about-body__paragraph"><%= gettext "Trivium LMS (Learning Management System) is a platform
+                        designed to help instructors manage educational coursework
+                        online. We provide educators with a single platform for
+                        making course material accessible online, including lesson
+                        content, assignments, and assessments." %></p>
+        <div class="spacer-24"></div>
+        <p class="about-body__paragraph"><%= gettext "The platform help educators streamline the delivery of online
+                        learning for educational institutions, allowing for a more
+                        connected and accessible educational experience for students." %></p>
+        <div class="spacer-24"></div>
+        <p class="about-body__paragraph"><%= gettext "Get in touch!" %></p>
+      </div> <%# >>>> about-body__text %>
+      <ul class="about-body__ul">
+        <li class="about-body__li">
+          <a href="#" class="about-body__link"></a>
+        </li> <%# >>>> about-body__link %>
+      </ul>
+    </div> <%# >>>> about-body %>
+    <footer class="about-footer">
+      <div class="locale">
+        <span class="locale__title"><%= gettext "Choose a language" %></span>
+        <div class="spacer-8"></div>
+        <a href="#" id="locale-link" class="locale__link">
+          <div>
+            <%= cond do %>
+              <% Gettext.get_locale(TriviumWeb.Gettext) == "es" -> %>
+                <figure class="locale__icon">
+                  <%= TriviumWeb.SvgView.render("_es_flag.html") %>
+                </figure>
+                <span class="locale__language">Español</span>
+              <% Gettext.get_locale(TriviumWeb.Gettext) == "pt_BR" -> %>
+                <figure class="locale__icon">
+                  <%= TriviumWeb.SvgView.render("_br_flag.html") %>
+                </figure>
+                <span class="locale__language">Português</span>
+              <% true -> %>
+                <figure class="locale__icon">
+                  <%= TriviumWeb.SvgView.render("_us_flag.html") %>
+                </figure>
+                <span class="locale__language">English</span>
+            <% end %>
+          </div>
+          <figure class="locale__arrow">
+            <%= TriviumWeb.SvgView.render("_arrow_link_silver.html") %>
+          </figure>
+        </a>
+      </div> <%# >>>>>> locale %>
+      <div class="spacer-16"></div>
+    </footer>
+  </div>
+</div> <%# >>>> about %>
+<!-- learn_more_path -->

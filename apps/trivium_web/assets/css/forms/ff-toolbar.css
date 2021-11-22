@@ -1,0 +1,24 @@
+.ff-toolbar {
+  width: 90%;
+  max-width: 38rem;
+  height: 100%;
+  margin: 0 auto;
+  
+  padding-top: 1.6rem;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  &__right {
+    display: none;
+
+    @media (min-width: 820px) {
+      display: block;
+    }
+  }
+
+  &__spacer {
+    height: 2.1rem;
+  }
+}

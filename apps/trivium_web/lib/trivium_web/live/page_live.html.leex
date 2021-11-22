@@ -1,0 +1,124 @@
+<%= if @current_user do %>
+
+  <nav class="nav dark-bg">
+    <div class="nav__container">
+      <div class="nav__left">
+        <p class="nav__title">
+          <%= gettext "activities" %><span class="nav__dot">.</span>
+        </p> <%# >>>>>>>>> nav__title %>
+      </div> <%# >>>>>>>>> nav__left %>
+      <div class="nav__right">
+        <a href="/" class="logo__16">
+          <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+        </a>
+        <ul class="nav__ul">
+          <li class="nav__li">
+            <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+              <%= if @current_user.avatar != nil do %>
+                <div class="nav-avatar">
+                  <%= if @user_score > 0 do %>
+                    <div class="nav-avatar__score">
+                      <span class="nav-avatar__text"><%= @user_score %></span>
+                    </div>
+                  <% end %>
+                  <figure class="nav-avatar__figure">
+                    <img class="nav-avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+                  </figure>
+                </div>
+              <% else %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+                <div class="nav-avatar">
+                  <%= if @user_score > 0 do %>
+                    <div class="nav-avatar__score">
+                      <span class="nav-avatar__text"><%= @user_score %></span>
+                    </div>
+                  <% end %>
+                  <figure class="nav-avatar__fi">
+                    <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                  </figure>
+                </div>
+              <% end %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+            <% end %> <%# >>>>>>>>> Routes.profile_show_path %>
+          </li>
+          <li class="nav__li">
+            <%= link (gettext "exit"),
+                to: Routes.user_session_path(@socket,
+                                             :delete,
+                                             locale: Gettext.put_locale(TriviumWeb.Gettext,
+                                                                        @current_user.prefered_language)),
+                                                                        method: :delete, class: "nav__link" %>
+          </li>
+        </ul> <%# >>>>>>>>> nav__right--links %>
+      </div> <%# >>>>>>>>> nav__right %>
+    </div> <%# >>>>>>>>> nav__container %>
+  </nav> <%# >>>>>>>>> nav %>
+
+  <div class="spacer-20 dark-bg"></div>
+
+  <%# >>>>>>>>> ROOT ACCESS >>>>>>>>>>> %>
+  <%= if @current_user.role == "root" || @current_user.role == "sales" do %>
+    <%= live_component @socket, TriviumWeb.DashComponent, current_user: @current_user %>
+  <% end %>
+
+  <%# >>>>>>>>> CUSTOMER ACCESS >>>>>>>>>>> %>
+  <%= if @current_user.role == "customer" do %>
+
+    <%# >>>>>>>>> CUSTOMER NOT SUBSCRIBED TO ANY CLASSROOM YET >>>>>>>>>>> %>
+    <%= if @user_subscriptions == [] do %>
+      <%= live_component @socket, TriviumWeb.HandleFormComponent,
+                          id: "handle-form",
+                          current_user: @current_user,
+                          handle: @handle %>
+      <%= link (gettext "exit"), to: Routes.user_session_path(@socket, :delete), method: :delete, class: "no-menu-exit" %>
+    <% end %>
+
+    <%# >>>>>>>>> CUSTOMER NOT SUBSCRIBED TO CLASSROOM >>>>>>>>>>> %>
+    <%= if @user_subscriptions != [] do %>
+      <%= live_component @socket, TriviumWeb.SubscribedCustomerComponent,
+                        id: "subscribed-customer",
+                        user_subscriptions: @user_subscriptions,
+                        current_user: @current_user %>
+      <%= live_component @socket, TriviumWeb.MenuComponent, current_user: @current_user, link_path: nil %>
+    <% end %>
+  <% end %> <%# >>>>>>>>> @current_user.role == "customer" %>
+
+  <div class="spacer-180"></div>
+
+<% else %>
+  <%= live_component @socket, TriviumWeb.LandingComponent %>
+<% end %>
+
+<span id="locale" phx-hook="Locale" data-has-locale="<%= if @current_user, do: @current_user.prefered_language, else: inspect @locale %>"></span>
+
+<div id="modal-locale" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-content__left">
+      <h1 id="modal-locale-title" class="modal-content__title"><%= gettext "Please choose a language" %></h1>
+      <div class="modal-content__wrapper">
+        <a class="modal-content__link" href="?locale=en">
+          <figure class="modal-content__icon">
+            <%= TriviumWeb.SvgView.render("_us_flag.html") %>
+          </figure>
+          <span class="modal-content__language">english</span>
+        </a>
+        <a class="modal-content__link" href="?locale=es">
+          <figure class="modal-content__icon">
+            <%= TriviumWeb.SvgView.render("_es_flag.html") %>
+          </figure>
+          <span class="modal-content__language">español</span>
+        </a>
+        <a class="modal-content__link" href="?locale=pt_BR">
+          <figure class="modal-content__icon">
+            <%= TriviumWeb.SvgView.render("_br_flag.html") %>
+          </figure>
+          <span class="modal-content__language">português</span>
+        </a>
+      </div>
+    </div> <%# >>>>>>> modal-content__left %>
+    <div class="modal-content__right">
+      <figure class="modal-content__close">
+        <%= TriviumWeb.SvgView.render("_close.html") %>
+      </figure>
+    </div> <%# >>>>>>> modal-content__left %>
+  </div>
+</div>

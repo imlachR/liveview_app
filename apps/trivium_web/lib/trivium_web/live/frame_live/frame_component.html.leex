@@ -1,0 +1,14 @@
+<%= f = form_for @changeset, "#",
+    id: "frame-video-#{@content.id}",
+    class: "frame-video",
+    phx_target: @myself,
+    phx_change: "validate",
+    phx_submit: "upload" %>
+
+    <h1>frame</h1>
+    <%= textarea f, :code, required: true, class: "form__textarea", placeholder: "Link", autofocus: true %>
+    <%= error_tag f, :code %>
+
+</form>
+
+<a href="#" phx-click="cancel-frameform" phx-target="<%= @myself %>">cancel</a>

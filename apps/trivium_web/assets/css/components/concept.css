@@ -1,0 +1,20 @@
+.concept {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__layer-1 {
+
+  }
+
+  &__layer-0 {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto
+  }
+
+
+}

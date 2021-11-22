@@ -1,0 +1,106 @@
+.writing-toolbar {
+  max-width: 768px;
+  margin: 0 auto;
+
+  &__container {
+    width: 100%;
+
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__side {
+    background-color: #fafafa;
+    border-radius: 1.6rem;
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+
+    display: flex;
+  }
+
+  &__btn {
+    padding: .6rem 1.6rem;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__divider {
+    width: 1px;
+    height: 100%;
+
+    background: hsla(232, 54%, 11%, .1);
+  }
+
+  &__position {
+    padding-left: 2.4rem;
+    padding-right: 2.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: var(--dark);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__link {
+    padding: .6rem .8rem;
+
+    @media (min-width: 365px) {
+      padding: .6rem 1.6rem;
+    }
+
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.writing-body {
+  outline: var(--marine);
+
+  color: hsla(232, 54%, 11%, 1);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+
+  a {
+    color: hsla(220, 100%, 50%, 1);
+  }
+
+  b {
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-left: 1.6rem;
+    list-style-image: url("https://d1j7twnp44fgl4.cloudfront.net/sav/grey-dot.svg");
+  }
+}

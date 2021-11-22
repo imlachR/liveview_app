@@ -1,0 +1,267 @@
+<nav class="nav dark-bg">
+  <div class="nav__container">
+    <div class="nav__left">
+      <%= live_redirect to: Routes.page_path(@socket, :index), class: "nav__icon" do %>
+        <%= TriviumWeb.SvgView.render("_arrow-back.html") %>
+      <% end %>
+    </div> <%# >>>>>>>>> nav__left %>
+    <div class="nav__right">
+      <a href="/" class="logo__16">
+        <span class="logo__t">t</span><span class="logo__r">r</span><span  class="logo__i">i</span>vium<span  class="logo__dot">.</span>
+      </a>
+      <ul class="nav__ul">
+        <li class="nav__li">
+          <%= live_redirect to: Routes.profile_show_path(@socket, :show, @current_user.id), class: "nav__link" do %>
+            <%= if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__figure">
+                  <img class="nav-avatar__img" src="<%= @current_user.avatar.url %>" alt="">
+                </figure>
+              </div>
+            <% else %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+              <div class="nav-avatar">
+                <%= if user_score(@current_user.id) > 0 do %>
+                  <div class="nav-avatar__score">
+                    <span class="nav-avatar__text"><%= user_score(@current_user.id) %></span>
+                  </div>
+                <% end %>
+                <figure class="nav-avatar__fi">
+                  <%= TriviumWeb.SvgView.render("_fallback-35x35.html") %>
+                </figure>
+              </div>
+            <% end %> <%# >>>>>>>>> if @current_user.avatar != nil do %>
+          <% end %> <%# >>>>>>>>> Routes.profile_show_path %>
+        </li>
+        <li class="nav__li">
+          <%= link (gettext "exit"),
+              to: Routes.user_session_path(@socket,
+                                           :delete,
+                                           locale: Gettext.put_locale(TriviumWeb.Gettext,
+                                                                      @current_user.prefered_language)),
+                                                                      method: :delete, class: "nav__link" %>
+        </li>
+      </ul> <%# >>>>>>>>> nav__right--links %>
+    </div> <%# >>>>>>>>> nav__right %>
+
+  </div> <%# >>>>>>>>> nav__container %>
+</nav> <%# >>>>>>>>> nav %>
+
+<div class="spacer-32 dark-bg"></div>
+
+<div class="heading dark-bg">
+  <div class="heading__container">
+    <h1 class="heading__title"><%= @classroom.name %><span class="heading__dot">.</span></h1>
+  </div>
+</div> <%# >>>>>>>>> heading %>
+
+<div class="spacer-16 dark-bg"></div>
+
+<div class="tags dark-bg">
+  <div class="tags__container">
+    <%= if @classroom.prefix != nil do %>
+      <p class="tag">
+        <%= @classroom.prefix %>
+      </p>
+    <% end %>
+    <p class="tag">
+      <%= @classroom.institution.name %>
+    </p>
+  </div>
+</div> <%# >>>>>>>>> tags %>
+
+<div class="spacer-24 dark-bg"></div>
+
+<div class="handle-tag dark-bg">
+  <div class="handle-tag__container">
+    <%= if @classroom.handle != nil do %>
+      <div class="handle-code">
+        <span class="handle-code__info"><%= gettext "code" %></span>
+        <p class="handle-code__bubble" href="#"><%= @classroom.handle %></p>
+      </div>
+    <% else %>
+      <%= if @current_user.role == "root" || @current_user.role == "sales" do %>
+        <%= live_redirect (gettext "add handle"), to: Routes.classroom_edit_path(@socket, :edit, @classroom), class: "handle-tag__link" %>
+      <% end %>
+      <p class="handle-code__info"><%= gettext "no code yet" %></p>
+    <% end %>
+  </div>
+</div> <%# >>>>>>>>> handle-tag %>
+
+<div class="spacer-32 dark-bg"></div>
+
+<div class="tabs tabs__fixed dark-bg">
+  <div class="tabs__container">
+    <div class="tabs__left">
+      <ul class="tabs__ul">
+        <li class="tab">
+          <a class="<%= if @current_view == "subjects", do: "tab__active", else: "tab__inactive" %>"
+             href="#"
+             phx-click="go-to-subjects">
+             <span class="<%= if @current_view == "subjects", do: "tab__count-active blue-bg", else: "tab__count-inactive" %>"><%= Enum.count(@subjects) %></span>
+             <%= gettext "subjects" %>
+          </a>
+        </li>
+        <li class="tab">
+          <a class="<%= if @current_view == "students", do: "tab__active", else: "tab__inactive" %>"
+            href="#"
+            phx-click="go-to-students">
+              <span class="<%= if @current_view == "students", do: "tab__count-active green-bg dark-text", else: "tab__count-inactive" %>"><%= Enum.count(students_accepted(@admissions)) %></span>
+              <%= gettext "students" %>
+          </a>
+        </li>
+        <li class="tab">
+          <a class="<%= if @current_view == "request", do: "tab__active", else: "tab__inactive" %>"
+            href="#"
+            phx-click="go-to-request">
+              <span class="<%= if @current_view == "request", do: "tab__count-active crimson-bg", else: "tab__count-inactive" %>"><%= Enum.count(students_request(@requests)) %></span>
+              <%= gettext "request" %>
+          </a>
+        </li>
+      </ul> <%# >>>>> tabs__ul %>
+
+    </div> <%# >>>>> tabs__left %>
+    <div class="tabs__right"></div> <%# >>>>> tabs__right %>
+  </div> <%# >>>>> tabs__container %>
+</div> <%# >>>>> tabs %>
+
+<div class="spacer-40"></div>
+
+<%= if @current_view == "subjects" do %>
+  <ul class="simple-cards">
+    <%= for subject <- @subjects do %>
+      <li class="simple-card" id="simple-card-<%= subject.id %>">
+        <div class="simple-card__bg">
+          <span class="simple-card__bg--letters simple-card__bg--grey"><%= get_3_letters(subject.name) %></span>
+        </div> <%# >>>> simple-card__bg %>
+        <div class="simple-card__container">
+          <%= live_redirect to: Routes.subject_show_path(@socket, :show, subject), class: "simple-card__top" do %>
+            <span class="simple-card__title"><%= subject.name %></span>
+          <% end %>
+
+          <div class="card__bottom">
+            <%= live_redirect (gettext "edit"), to: Routes.subject_edit_path(@socket, :edit, subject), class: "card__edit" %>
+            <%= link (gettext "delete"), to: "#", phx_click: "delete-subject",
+                                     phx_value_id: subject.id,
+                                     data: [confirm: "Are you sure?"], class: "card__delete" %>
+          </div>  <%# card__bottom %>
+        </div> <%# >>>> simple-card__container %>
+      </li>
+    <% end %>
+  </ul> <%# >>>>> simple-cards %>
+<% end %>
+
+<%= if @current_view == "students" do %>
+<div class="contacts">
+  <ul class="contacts__container">
+    <%= if @admissions == [] do %>
+      <div class="spacer-24"></div>
+      <div class="contacts__empty">
+        <p class="contacts__empty-text"><%= gettext "no one here" %></p>
+      </div>
+    <% else %> <%# >>>>> if @admissions != [] do %>
+      <%= for subscription <- @admissions do %>
+        <%= if subscription.accepted == true do %>
+          <li class="contact" id="contact-<%= subscription.id %>">
+            <div class="contact__container">
+              <div class="contact__left">
+                <%= if subscription.user.avatar != nil do %>
+                  <figure class="contact__figure">
+                    <img class="contact__avatar" src="<%= subscription.user.avatar.url %>" alt="">
+                  </figure>
+                <% else %>
+                  <figure class="contact__fi">
+                    <%= TriviumWeb.SvgView.render("_fallback-64x64.html") %>
+                  </figure>
+                <% end %>
+              </div> <%# >>>>> contact__left %>
+              <div class="contact__right">
+                <div class="contact__top">
+                  <p class="contact__name"><%= subscription.user.name %></p>
+                </div> <%# >>>>> contact__top %>
+                <div class="contact__bottom">
+                  <ul class="contact__ul">
+                    <%= if subscription.policy != "teacher" do %>
+                      <li class="contact__li"><p class="contact__score"><%= user_score(subscription.user.id) %></p></li>
+                    <% else %>
+                      <li class="contact__li"><p class="contact__policy"><%= if subscription.policy == "teacher", do: "#{gettext "teacher"}" %></p></li>
+                    <% end %>
+                    <li class="contact__li"><%= link (gettext "excluir"), to: "#", phx_click: "move-to-requests", phx_value_id: subscription.id, data: [confirm: (gettext "Moving to requests, Please confirm")], class: "contact__link crimson-text" %></li>
+                    <%= if @current_user.role == "root" do %>
+                      <li>
+                        <%= live_redirect subscription.policy, to: Routes.subscription_edit_path(@socket, :edit, subscription), class: "contact__link crimson-text" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div> <%# >>>>> contact__bottom %>
+              </div> <%# >>>>> contact__right %>
+            </div> <%# >>>>> contact__container %>
+          </li> <%# >>>>> contact %>
+        <% end %> <%# >>>>> if subscription.accepted == true do %>
+      <% end %> <%# >>>>> for subscription <- @admissions do %>
+    <% end %> <%# >>>>> if @admissions != [] do %>
+  </ul> <%# >>>>> contacts__container %>
+</div> <%# >>>>> contacts %>
+<% end %>
+
+<%= if @current_view == "request" do %>
+  <div class="contacts">
+    <ul class="contacts__container">
+      <%= if @requests == [] do %>
+        <div class="spacer-24"></div>
+        <div class="contacts__empty">
+          <p class="contacts__empty-text"><%= gettext "no one here" %></p>
+        </div>
+      <% else %> <%# >>>>> if @requests == [] do %>
+        <%= for subscription <- @requests do %>
+          <%= if subscription.accepted == false do %>
+            <li class="contact" id="contact-<%= subscription.id %>">
+              <div class="contact__container">
+                <div class="contact__left">
+                  <%= if subscription.user.avatar != nil do %>
+                    <figure class="contact__figure">
+                      <img class="contact__avatar" src="<%= subscription.user.avatar.url %>" alt="">
+                    </figure>
+                  <% else %>
+                    <figure class="contact__fi">
+                      <%= TriviumWeb.SvgView.render("_fallback-64x64.html") %>
+                    </figure>
+                  <% end %>
+                </div> <%# >>>>> contact__left %>
+                <div class="contact__right">
+                  <div class="contact__top">
+                    <p class="contact__name"><%= subscription.user.name %></p>
+                  </div> <%# >>>>> contact__top %>
+                  <div class="contact__bottom">
+                    <ul class="contact__ul">
+                      <li class="contact__li">
+                        <%= link "excluir", to: "#",
+                                phx_click: "delete-subscription",
+                                phx_value_id: subscription.id, data: [confirm: "Tem certeza de que deseja excluir?"],
+                                class: "contact__link crimson-text" %>
+                      </li>
+                      <li>
+                        <%= link "aceitar", to: "#",
+                                phx_click: "accept-subscription",
+                                phx_value_id: subscription.id,
+                                class: "contact__link marine-text" %>
+                      </li>
+                    </ul>
+                  </div> <%# >>>>> contact__bottom %>
+                </div> <%# >>>>> contact__right %>
+              </div> <%# >>>>> contact__container %>
+            </li> <%# >>>>> contact %>
+          <% end %> <%# >>>>> if subscription.accepted == false do %>
+        <% end %> <%# >>>>> for subscription <- @requests do %>
+      <% end %> <%# >>>>> if @requests == [] do %>
+    </ul> <%# >>>>> contacts__container %>
+  </div> <%# >>>>> contacts %>
+<% end %>
+
+<div class="spacer-180"></div>
+
+<%= live_component @socket, TriviumWeb.MenuComponent, current_user: @current_user, link_path: Routes.subject_new_path(@socket, :new, classroom_id: @classroom.id) %>
